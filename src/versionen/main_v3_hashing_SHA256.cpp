@@ -39,7 +39,7 @@ public:
 		break;
 
 		default:
-			std::cout << "Ungültige Eingabe, bitte versuch es erneut." << std::endl;
+			std::cout << "Ungueltige Eingabe, bitte mach es erneut." << std::endl;
 		break;
 
 		}
@@ -68,7 +68,6 @@ public:
 
 
 		std::ofstream registrierung("data/v3_users_dat.txt", std::ios::app);
-
 		registrierung << emailEingabe << "  " << hash_hex_passwort << "  " << nameEingabe << std::endl;
 		registrierung.close();
 
@@ -81,11 +80,12 @@ public:
 		std::cout << "Bitte gib deine E-Mail ein: ";
 		std::cin >> emailAnmeldung;
 
+
 		std::cout << "Bitte gib dein Passwort ein: ";
 		std::cin >> passwortAnmeldung;
 
 
-		// Hashen des eingegebenen Passworts für die Anmeldung
+		// Hashen des eingegebenen Passworts für die Anmeldung um es zu veergleichen
 		picosha2::hash256_hex_string(passwortAnmeldung, passwortAnmeldung);
 
 		std::ifstream anmeldung("data/v3_users_dat.txt");

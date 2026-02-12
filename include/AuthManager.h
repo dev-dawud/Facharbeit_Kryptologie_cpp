@@ -3,21 +3,24 @@
 #include <fstream>
 #include <picosha2.h>
 #include <random>	
+#include <thread>
+#include <chrono>
 
 
 // Backend Bereich des Programms
 // //In dieser Klasse sind die Funktionen für die Regristrierung und Anmeldung des users
 class AuthManager {
 
-	
+
 private:
 
 	int menueEingabe;
 	std::string nameEingabe, emailEingabe, passwortEingabe;
 	std::string emailAnmeldung, passwortAnmeldung;
-	std::string dEmail, dName, dPasswort, dSalt;
-	std::string salt, passwortSalt , pepper;
+	std::string dEmail, dName, dPasswort, dSalt, dTel;
+	std::string salt, passwortSalt, code;
 
+	const std::string codeZeichen = "0123456789";
 
 	const std::string zeichen =
 		"abcdefghijklmnopqrstuvwxyz"
@@ -25,13 +28,13 @@ private:
 		"0123456789"
 		"!@#$%^&*";
 
+	const std::string pepper = "d3r_p3pp3r_ist_imm3r_3in_f3st3r_w3rt_und_wird_imm3r_irg3ndwo_im_cod3_od3r_3xt3rn3_f3stplatt3_v3rst3ckt";
 
 
 
-	// ramLoeschen() ist privat weil man es nur intern in der klasse benutzen kann um sicher zu sein dass daten wie passwörter nicht im ram verbleiben
 	void ramLoeschen(std::string& eingabe) {
 
-	
+
 		for (size_t i = 0; i < eingabe.size(); ++i) {
 
 			volatile char* p = &eingabe[i];
@@ -39,16 +42,30 @@ private:
 			*p = '\0';
 
 		}
-		eingabe.clear(); 
+		eingabe.clear();
 
 	}
 
-	
+	void generiereCode() {
+
+		code = "";
+
+		std::random_device rd;
+		std::mt19937 generator(rd());
+
+		std::uniform_int_distribution<> dist(0, static_cast<int>(codeZeichen.size()) - 1);
+
+		for (int i = 0; i < 6; ++i) {
+
+			code += codeZeichen[dist(generator)];
+		}
+
+
+	}
+
 	void generiereSalt() {
 
-		// um Potenzierung zu vermeiden wird der salt immer auf leer definiert bevor ein neuer generiert wird
 		salt = "";
-
 
 		std::random_device rd;
 		std::mt19937 generator(rd());
@@ -57,7 +74,7 @@ private:
 
 
 		for (int i = 0; i < 16; ++i) {
-			
+
 			salt += zeichen[dist(generator)];
 
 		}
@@ -65,11 +82,31 @@ private:
 	}
 
 
-	// Öffentlicher Bereich der Klasse 
-	// Hier sind die Funktionen für die Registrierung und Anmeldung des users
 public:
 
-	bool bRegistrieren(std::string name, std::string email, std::string passwort) {
+	void codeSenden(std::string tel) {
+	
+		std::cout << "\nsenden... \n";
+
+		generiereCode();
+
+		std::this_thread::sleep_for(std::chrono::seconds(5));
+
+		std::cout << "Code gesendet an " << tel << ": " << code << std::endl;
+	}
+
+	bool bZweiFaktor_auth(std::string c) {
+
+		if (c == code) {
+
+			return true;
+		}
+		else {
+
+			return false;
+		}
+	}
+	bool bRegistrieren(std::string name, std::string email, std::string passwort, std::string tel) {
 
 		generiereSalt();
 
@@ -80,13 +117,13 @@ public:
 
 
 		std::ofstream registrierung("data/v5_users_dat.txt", std::ios::app);
-		registrierung << email << " " << salt << " " << hash_hex_passwort << " " << name << std::endl;
+
+		registrierung << email << " " << salt << " " << hash_hex_passwort << " " << name << " " << tel << std::endl;
 
 		registrierung.close();
 
 
-
-		ramLoeschen(passwort); 
+		ramLoeschen(passwort);
 		ramLoeschen(salt);
 
 
@@ -95,11 +132,11 @@ public:
 
 	bool bAnmelden(std::string email, std::string passwort) {
 
-		
+
 		std::ifstream anmeldung("data/v5_users_dat.txt");
 
 
-		while (anmeldung >> dEmail >> dSalt >> dPasswort >> dName) {
+		while (anmeldung >> dEmail >> dSalt >> dPasswort >> dName >> dTel) {
 
 			if (dEmail == email) {
 

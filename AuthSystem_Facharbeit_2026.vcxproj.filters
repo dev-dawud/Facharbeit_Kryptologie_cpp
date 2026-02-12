@@ -18,7 +18,7 @@
     <ClCompile Include="include\md5.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="final_v5.cpp">
+    <ClCompile Include="src\final\main_v6_2fa.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

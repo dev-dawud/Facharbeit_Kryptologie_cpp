@@ -13,6 +13,7 @@ public:
 	std::string dEmail, dName, dPasswort , dSalt;
 	std::string salt , passwortSalt;
 
+	// Für den Salt alle möglichen Zeichen die vorkommen können oder benutzt werden können
 	const std::string zeichen =
 		"abcdefghijklmnopqrstuvwxyz"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -46,7 +47,7 @@ public:
 		break;
 
 		default:
-			std::cout << "Ungültige Eingabe, bitte versuch es erneut." << std::endl;
+			std::cout << "Ungültige Eingabe, bitte mach es erneut." << std::endl;
 		break;
 
 		}
@@ -66,7 +67,7 @@ public:
 		std::cout << "Passwort: \n";
 		std::cin >> passwortEingabe;
 
-		// <random> bibliothek wird genutzt um eine zufallkette zu generieren genaurere infos:  https://learn.microsoft.com/en-us/cpp/standard-library/random?view=msvc-170 
+		// <random> bibliothek um eine zufallskette zu generieren:  https://learn.microsoft.com/en-us/cpp/standard-library/random?view=msvc-170 
 		// rd wird definiert um eine Zufallszahl zu generieren die als Seed für den Generator dient
 		std::random_device rd;
 

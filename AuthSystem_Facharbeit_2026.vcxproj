@@ -128,8 +128,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="final_v5.cpp" />
     <ClCompile Include="include\md5.cpp" />
+    <ClCompile Include="src\final\main_v6_2fa.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AuthManager.h" />

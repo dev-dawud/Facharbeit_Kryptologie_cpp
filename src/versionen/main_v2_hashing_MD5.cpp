@@ -40,7 +40,7 @@ public:
 		break;
 
 		default:
-			std::cout << "Ungueltige Eingabe, bitte versuch es erneut" << std::endl;
+			std::cout << "Ungueltige Eingabe, bitte mach es erneut" << std::endl;
 		break;
 
 		}
