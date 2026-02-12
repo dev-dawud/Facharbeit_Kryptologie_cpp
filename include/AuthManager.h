@@ -85,7 +85,27 @@ private:
 public:
 
 	void codeSenden(std::string tel) {
-	
+		
+		std::string checkNummer;
+
+		if (tel.empty()) {
+
+			// Nummer wird überprüft ob die in der Datei existiert wenn ja wird die Nummer aus der Datei genommen wenn nein wird die eingegebene Nummer von bregistrieren() genommen
+			checkNummer = dTel;
+		}
+		else {
+
+			checkNummer = tel;
+
+		}
+
+		if(checkNummer.empty()) {
+
+			std::cout << "Fehler: Keine Telefonnummer gefunden :(" << std::endl;
+
+			return;
+		}
+
 		std::cout << "\nsenden... \n";
 
 		generiereCode();
@@ -116,7 +136,7 @@ public:
 		picosha2::hash256_hex_string(passwort, hash_hex_passwort);
 
 
-		std::ofstream registrierung("data/v5_users_dat.txt", std::ios::app);
+		std::ofstream registrierung("data/v6_users_dat.txt", std::ios::app);
 
 		registrierung << email << " " << salt << " " << hash_hex_passwort << " " << name << " " << tel << std::endl;
 
@@ -133,7 +153,7 @@ public:
 	bool bAnmelden(std::string email, std::string passwort) {
 
 
-		std::ifstream anmeldung("data/v5_users_dat.txt");
+		std::ifstream anmeldung("data/v6_users_dat.txt");
 
 
 		while (anmeldung >> dEmail >> dSalt >> dPasswort >> dName >> dTel) {
@@ -150,7 +170,12 @@ public:
 
 
 				if (dPasswort == berechneterHash) {
+
 					ramLoeschen(passwort);
+					ramLoeschen(dSalt);
+					ramLoeschen(dPasswort);
+					ramLoeschen(dTel);
+
 					return true;
 				}
 			}
