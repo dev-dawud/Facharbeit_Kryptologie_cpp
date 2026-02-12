@@ -13,10 +13,6 @@ public:
 public:
 
 	int menueEingabe;
-	std::string nameEingabe, emailEingabe, passwortEingabe;
-	std::string emailAnmeldung, passwortAnmeldung;
-	std::string dEmail, dName, dPasswort, dSalt;
-	std::string salt, passwortSalt;
 
 
 	void menueAnzeige() {
@@ -57,27 +53,39 @@ public:
 
 	void regristrierung() {
 
-
 		std::string n, e, p, t;
 
 		std::cout << "******* REGISTRIERUNG *******" << std::endl << std::endl;
 
 
 
-		std::cout << "Bitte gib deinen Namen ein: ";
+		std::cout << "Bitte gib deinen Namen ein (nur Vorname!): ";
 		std::getline(std::cin >> std::ws, n);
 
 
 		std::cout << "Bitte gib deine E-Mail ein: ";
 		std::cin >> e;
 
+		// überprüft ob @ vorkommt bei der eingabe und npos gibt an wenn es nicht gefunden wurde und ein fehlermeldung kommt
+		if (e.find('@') == std::string::npos) {
+
+			std::cout << "E-Mail-Adresse ungueltig Bitte versuche es erneut\n";
+			return;
+		}
 
 		std::cout << "Bitte gib deine Tel. ein: ";
 		std::cin >> t;
 
+		if (t.length() != 9) {
 
-		std::cout << "Bitte gib dein Passwort ein: ";
+			std::cout << "Telefonnummer nicht gueltig Bitte versuche es erneut\n\n";
+			return;
+		}
+
+
+		std::cout << "Bitte erstelle ein Passwort: ";
 		std::cin >> p;
+
 
 
 		if (AuthManager.bRegistrieren(n, e, p , t) == true) {
@@ -87,9 +95,9 @@ public:
 		}
 		else {
 
-			std::cout << "Regristrierung fehlgeschlagen!\n";
+			std::cout << "Regristrierung fehlgeschlagen!\n" 
+					  << "Bitte versuche es erneut\n";
 		}
-
 
 	}
 
@@ -98,7 +106,7 @@ public:
 
 		std::string e, p, t;
 
-		std::cout << "********** ANMELDUNG **********" << std::endl << std::endl;
+		std::cout << "\n********** ANMELDUNG **********" << std::endl << std::endl;
 
 		std::cout << "Bitte gib deine E-Mail ein: ";
 		std::cin >> e;
@@ -109,14 +117,13 @@ public:
 
 		if (AuthManager.bAnmelden(e, p) == true) {
 
-			std::cout << "Anmeldung erfolgreich!\n";
-
 			zweiFaktor_auth();
 
 		}
 		else {
 
-			std::cout << "Anmeldung fehlgeschlagen!\n";
+			std::cout << "Anmeldung fehlgeschlagen!\n" << "Bitte versuche es erneut\n\n";
+
 		}
 
 	}
@@ -125,7 +132,7 @@ public:
 
 		std::string c;
 
-		std::cout << "Wir schicken dir einen 6 stelligen code bei ";
+		std::cout << "Wir schicken dir einen 6 stelligen code zu ";
 
 		AuthManager.codeSenden(c);
 		//system("start data\\users_tel.txt");

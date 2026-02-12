@@ -18,7 +18,7 @@
     <ClCompile Include="include\md5.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\final\main_v6_2fa.cpp">
+    <ClCompile Include="src\versionen\main_v5_peppered_hashing.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -26,13 +26,13 @@
     <ClInclude Include="User.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="include\AuthManager.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="include\picosha2.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="include\md5.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AuthManager - v5.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

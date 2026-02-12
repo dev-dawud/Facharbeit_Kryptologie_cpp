@@ -1,16 +1,14 @@
 #pragma once
+
 #include <iostream>		
 #include <fstream>
-#include <picosha2.h>
 #include <random>	
 #include <thread>
 #include <chrono>
+#include <picosha2.h>
+#include <windows.h>
 
-
-// Backend Bereich des Programms
-// //In dieser Klasse sind die Funktionen für die Regristrierung und Anmeldung des users
 class AuthManager {
-
 
 private:
 
@@ -34,13 +32,10 @@ private:
 
 	void ramLoeschen(std::string& eingabe) {
 
-
 		for (size_t i = 0; i < eingabe.size(); ++i) {
 
 			volatile char* p = &eingabe[i];
-
 			*p = '\0';
-
 		}
 		eingabe.clear();
 
@@ -59,8 +54,6 @@ private:
 
 			code += codeZeichen[dist(generator)];
 		}
-
-
 	}
 
 	void generiereSalt() {
@@ -70,49 +63,53 @@ private:
 		std::random_device rd;
 		std::mt19937 generator(rd());
 
-		std::uniform_int_distribution<> dist(0, zeichen.size() - 1);
-
+		std::uniform_int_distribution<> dist(0, static_cast<int>(zeichen.size()) - 1);
 
 		for (int i = 0; i < 16; ++i) {
 
 			salt += zeichen[dist(generator)];
-
 		}
-
 	}
-
 
 public:
 
 	void codeSenden(std::string tel) {
-		
+
+		SYSTEMTIME st;
+		GetLocalTime(&st);
+
+
 		std::string checkNummer;
 
 		if (tel.empty()) {
 
-			// Nummer wird überprüft ob die in der Datei existiert wenn ja wird die Nummer aus der Datei genommen wenn nein wird die eingegebene Nummer von bregistrieren() genommen
 			checkNummer = dTel;
 		}
 		else {
 
 			checkNummer = tel;
-
 		}
 
-		if(checkNummer.empty()) {
+		if (checkNummer.empty()) {
 
-			std::cout << "Fehler: Keine Telefonnummer gefunden :(" << std::endl;
-
+			std::cout << "\nFehler: Keine Telefonnummer gefunden :(\n" << std::endl;
 			return;
 		}
+
+
 
 		std::cout << "\nsenden... \n";
 
 		generiereCode();
 
+
 		std::this_thread::sleep_for(std::chrono::seconds(5));
 
-		std::cout << "Code gesendet an " << tel << ": " << code << std::endl;
+
+		std::cout << "Code gesendet an " << checkNummer << std::endl;
+		std::cout << code << std::endl;
+
+		std::cout << "gesendet um: " << st.wDay << "." << st.wMonth << "." << st.wYear << " " << st.wHour << ":" << st.wMinute << ":" << st.wSecond << std::endl;
 	}
 
 	bool bZweiFaktor_auth(std::string c) {
@@ -121,60 +118,51 @@ public:
 
 			return true;
 		}
-		else {
 
-			return false;
-		}
+		return false;
 	}
+
 	bool bRegistrieren(std::string name, std::string email, std::string passwort, std::string tel) {
 
 		generiereSalt();
 
+
 		passwort = passwort + pepper + salt;
 
 		std::string hash_hex_passwort;
-		picosha2::hash256_hex_string(passwort, hash_hex_passwort);
 
+		picosha2::hash256_hex_string(passwort, hash_hex_passwort);
 
 		std::ofstream registrierung("data/v6_users_dat.txt", std::ios::app);
 
-		registrierung << email << " " << salt << " " << hash_hex_passwort << " " << name << " " << tel << std::endl;
-
+		registrierung << salt << " " << tel << " " << hash_hex_passwort << " " << email << " " << name << std::endl;
 		registrierung.close();
-
 
 		ramLoeschen(passwort);
 		ramLoeschen(salt);
-
 
 		return true;
 	}
 
 	bool bAnmelden(std::string email, std::string passwort) {
 
-
 		std::ifstream anmeldung("data/v6_users_dat.txt");
 
-
-		while (anmeldung >> dEmail >> dSalt >> dPasswort >> dName >> dTel) {
+		while (anmeldung >> dSalt >> dTel >> dPasswort >> dEmail >> dName) {
 
 			if (dEmail == email) {
 
 				std::string kombi = passwort + pepper + dSalt;
-
 				std::string berechneterHash;
 				picosha2::hash256_hex_string(kombi, berechneterHash);
 
-
 				ramLoeschen(kombi);
-
 
 				if (dPasswort == berechneterHash) {
 
 					ramLoeschen(passwort);
 					ramLoeschen(dSalt);
 					ramLoeschen(dPasswort);
-					ramLoeschen(dTel);
 
 					return true;
 				}
@@ -185,6 +173,4 @@ public:
 
 		return false;
 	}
-
-
 };

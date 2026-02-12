@@ -1,5 +1,5 @@
 #include <iostream>
-#include <AuthManager.h> 
+#include <AuthManager - v5.h> 
 
 // In v5 habe ich das Programm in einen Frontend und backend unterteilt. In AuthManager.h findet man den Backend bereich
 // Im frontend breich wird das Menü in der konsole angezeigt und input und output verarbeitet
@@ -68,9 +68,8 @@ public:
 
 
 
-		std::cout << "Bitte gib deinen Namen ein: ";
+		std::cout << "Bitte gib deinen Namen ein (nur Vorname!): ";
 
-		// std::ws entfernt das lerrzeichen bei der namneneingabe
 		// getline bansprucht die ganze zeile
 		std::getline(std::cin >> std::ws, n);
 
