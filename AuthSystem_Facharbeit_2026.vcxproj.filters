@@ -18,7 +18,7 @@
     <ClCompile Include="include\md5.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\versionen\main_v5_peppered_hashing.cpp">
+    <ClCompile Include="tools\main_rainbow_table.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,7 +32,10 @@
     <ClInclude Include="include\md5.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="include\AuthManager - v5.h">
+    <ClInclude Include="include\AuthManager-v5.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AuthManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
