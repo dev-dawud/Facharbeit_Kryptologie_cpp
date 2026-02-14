@@ -1,17 +1,81 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <md5.h>
+
+void rainbowTable();
+void bruteForce();
+
+void rainbowTable() {
+
+	std::string hash;
+	std::string Zeile;
+	std::string hashZeile;
+
+	bool gefunden = false;
+	bool APIgefunden = false;
+
+	MD5 md5;
+
+	std::cout << "Bitte geben sie ihren Hashwert ein : ";
+	std::cin >> hash;
+
+	std::fstream tabelle("data/list/rockyou.txt");
+
+
+	while (std::getline(tabelle, Zeile)) {
+
+		hashZeile = md5(Zeile);
+
+		if (hash == hashZeile) {
+
+			gefunden = true;
+
+			break;
+		}
+		
+	}
+
+	tabelle.close();
+
+	if(gefunden == true) {
+
+		std::cout << "Passwort gefunden: " << Zeile << std::endl;
+
+	}
+	else {
+
+		std::string email = "davidwahab869@gmail.com";
+		std::string code = "61f152f62c4a29f6";
+
+		std::string url = "https://md5decrypt.net/en/Api/api.php?hash=" + hash + "&hash_type=md5&email=" + email + "&code=" + code;
+
+
+		std::system(("start \"\" \"" + url + "\"").c_str());
+
+		if (APIgefunden == true) {
+
+			std::cout << "Passwort gefunden!";
+
+			return;
+		}
+		else {
+
+			std::cout << "Passwort nicht gefunden" << std::endl;
+
+			//bruteForce();
+		}
+		
+
+		}
+}
 
 void bruteForce() {
 
-    // Das sind alle mögliche Kombinationen die durch gegeangen werden
     std::string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+    
+    std::string passwordVersuch , password;
 
-	std::string password = "ceslj";
-	std::string passwordVersuch;
-
-    // 1. Kombination von 1 Zeichen
-    // : bedeutet dass a jedes zeichen aus dem alphabet annimmt
     for (char a : alphabet) {
 
         passwordVersuch = a;
@@ -24,7 +88,7 @@ void bruteForce() {
         }
     }
 
-	// 2. Kombination von 2 Zeichen
+    // 2. Kombination von 2 Zeichen
     for (char a : alphabet) {
 
         for (char b : alphabet) {
@@ -39,9 +103,9 @@ void bruteForce() {
                 return;
             }
         }
-    } 
+    }
 
-	// 3. Kombination von 3 Zeichen
+    // 3. Kombination von 3 Zeichen
     for (char a : alphabet) {
 
         for (char b : alphabet) {
@@ -60,7 +124,7 @@ void bruteForce() {
         }
     }
 
-	// 4. Kombination von 4 Zeichen
+    // 4. Kombination von 4 Zeichen
     for (char a : alphabet) {
 
         for (char b : alphabet) {
@@ -82,7 +146,7 @@ void bruteForce() {
         }
     }
 
-	// 5. Kombination von 5 Zeichen
+    // 5. Kombination von 5 Zeichen
     for (char a : alphabet) {
 
         for (char b : alphabet) {
@@ -106,13 +170,14 @@ void bruteForce() {
             }
         }
     }
+
 }
+
 
 int main() {
 
+	rainbowTable();
 
-    bruteForce();
 
-
-    return 0;
+	return 0;
 }

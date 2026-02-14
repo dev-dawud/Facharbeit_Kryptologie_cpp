@@ -111,6 +111,7 @@ public:
 		if (AuthManager.bAnmelden(e, p) == true) {
 
 			std::cout << "Anmeldung erfolgreich!\n";
+
 		}
 		else {
 

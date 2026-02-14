@@ -63,7 +63,6 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 [main_brute_force.cpp](tools/main_brute_force.cpp)
 
 - generiert alle möglichen Kombinationen von Passwörtern
-- 
 
 ---
 # Hinweis:
@@ -73,6 +72,15 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 - Compiler muss mindestens auf c++ 17 sein um es nutzen zu können
 - WICHTIG: alle only header files müssen im include ordner liegen (generell nicht vom Projekt entfernt werden)!
 - im ordner data befindet sich ein weiterer ordner namens list dort braucht man eine txt datei die man online runterladen kann rockyou.txt heißt die. Das ist eine Passwort liste mit über Millionen von Passwörtern die von Hackern oft verwendet wird. (diese bitte hinzufügen!)
+
+- Da das Programm in c++ geschrieben ist darf man nur eine einzige main Datein bzw Funktion haben. D.h. alle versionen müssen aus dem Projekt ausgeschlossen werden (siehe Bild 1). Am ende soll es so wie in Bild 2 aussehen wenn man Visual Studio nutzt. Alle versionen außer die gewünschte müssen ausgeschlossen werden
+
+
+![Bild für ausschließen aus dem Projekt](data/img/img1.png)
+![Bild für ausschließen aus dem Projekt](data/img/img2.png)
+
+---
+
 ## Repo klonen:
 
 ```bash

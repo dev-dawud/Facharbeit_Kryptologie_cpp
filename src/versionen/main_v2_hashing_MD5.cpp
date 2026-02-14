@@ -49,27 +49,27 @@ public:
 
 	void regristrierung() {
 
-		std::cout << "Name: \n";
+		std::cout << "Name: ";
 		std::cin >> nameEingabe;
 
 
-		std::cout << "E-Mail: \n";
+		std::cout << "E-Mail: ";
 		std::cin >> emailEingabe;
 
 
-		std::cout << "Passwort: \n";
+		std::cout << "Passwort: ";
 		std::cin >> passwortEingabe;
 		
 
 		// passwort wird durch den MD5 algorithmus gehashed (also verschlüsselt) bevor es gespeichert wird
 		passwortEingabe = md5(passwortEingabe);
 
-		std::ofstream registrierung("data/v2_users_dat.txt", std::ios::app);
+		std::ofstream registrierung("data/user/v2_users_dat.txt", std::ios::app);
 		registrierung << emailEingabe << "  " << passwortEingabe << "  " << nameEingabe << std::endl;
 		registrierung.close();
 
 
-		std::cout << "Regristrierung erfolgreich!\n";
+		std::cout << "Regristrierung erfolgreich!\n\n";
 
 	}
 
@@ -86,7 +86,7 @@ public:
 		// hier wird es erneut gehashed damit es mit dem gespeicherten gehashten Passwort verglichen werden kann
 		passwortAnmeldung = md5(passwortAnmeldung);
 
-		std::ifstream anmeldung("data/v2_users_dat.txt");
+		std::ifstream anmeldung("data/user/v2_users_dat.txt");
 
 
 		bool gefunden = false;

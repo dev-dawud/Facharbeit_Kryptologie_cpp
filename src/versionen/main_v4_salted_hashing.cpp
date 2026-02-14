@@ -56,15 +56,15 @@ public:
 
 	void regristrierung() {
 
-		std::cout << "Name: \n";
+		std::cout << "Name: ";
 		std::cin >> nameEingabe;
 
 
-		std::cout << "E-Mail: \n";
+		std::cout << "E-Mail: ";
 		std::cin >> emailEingabe;
 
 
-		std::cout << "Passwort: \n";
+		std::cout << "Passwort: ";
 		std::cin >> passwortEingabe;
 
 		// <random> bibliothek um eine zufallskette zu generieren:  https://learn.microsoft.com/en-us/cpp/standard-library/random?view=msvc-170 
@@ -90,7 +90,7 @@ public:
 		picosha2::hash256_hex_string(passwortEingabe, hash_hex_passwort); 
 
 
-		std::ofstream registrierung("data/v4_users_dat.txt", std::ios::app);
+		std::ofstream registrierung("data/user/v4_users_dat.txt", std::ios::app);
 		registrierung << emailEingabe << " " << salt << " " << hash_hex_passwort << " " << nameEingabe << std::endl;
 		registrierung.close();
 
@@ -111,7 +111,7 @@ public:
 
 		// picosha2::hash256_hex_string(passwortAnmeldung, passwortAnmeldung);
 
-		std::ifstream anmeldung("data/v4_users_dat.txt");
+		std::ifstream anmeldung("data/user/v4_users_dat.txt");
 
 
 		bool gefunden = false;

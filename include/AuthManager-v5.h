@@ -80,11 +80,10 @@ public:
 		picosha2::hash256_hex_string(passwort, hash_hex_passwort);
 
 
-		std::ofstream registrierung("data/v5_users_dat.txt", std::ios::app);
+		std::ofstream registrierung("data/user/v5_users_dat.txt", std::ios::app);
 		registrierung << email << " " << salt << " " << hash_hex_passwort << " " << name << std::endl;
 
 		registrierung.close();
-
 
 
 		ramLoeschen(passwort); 
@@ -97,7 +96,7 @@ public:
 	bool bAnmelden(std::string email, std::string passwort) {
 
 		
-		std::ifstream anmeldung("data/v5_users_dat.txt");
+		std::ifstream anmeldung("data/user/v5_users_dat.txt");
 
 
 		while (anmeldung >> dEmail >> dSalt >> dPasswort >> dName) {

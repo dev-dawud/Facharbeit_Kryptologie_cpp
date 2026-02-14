@@ -46,26 +46,26 @@ class Menue{
 
 		void regristrierung() {
 
-			std::cout << "Name: \n";
+			std::cout << "Name: ";
 			std::cin >> nameEingabe;
 
 
-			std::cout << "E-Mail: \n";
+			std::cout << "E-Mail: ";
 			std::cin >> emailEingabe;
 
 
-			std::cout << "Passwort: \n";
+			std::cout << "Passwort: ";
 			std::cin >> passwortEingabe;
 			
 
 			// fstream library wird genutzt um Daten in eine Datei zu schreiben
 			// ofstream erstellt die Datei und schreibt die Daten in der angegebenen Reihenfolge
 			// Problem jeder der Zugriff auf users_dat.txt hat kann die Passwörter im Klartext sehen , lesen und verändern
-			std::ofstream registrierung("data/v1_users_dat.txt", std::ios::app);
+			std::ofstream registrierung("data/user/v1_users_dat.txt", std::ios::app);
 			registrierung << emailEingabe << "  " << passwortEingabe << "  " << nameEingabe << std::endl;
 			registrierung.close();
 			
-			std::cout << "Regristrierung erfolgreich!\n";
+			std::cout << "Regristrierung erfolgreich!\n\n";
 
 		}
 		
@@ -79,7 +79,7 @@ class Menue{
 			std::cin >> passwortAnmeldung;
 
 			// ifstream liest die von der vorherigen erstellte datei zum lesen und vergleichen der Daten
-			std::ifstream anmeldung("data/v1_users_dat.txt");
+			std::ifstream anmeldung("data/user/v1_users_dat.txt");
 
 			bool gefunden = false;
 
