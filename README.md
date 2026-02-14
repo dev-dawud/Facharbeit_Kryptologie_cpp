@@ -46,12 +46,32 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 
 - Implementierung von 2fa (6 stelliger Sicherheitscode)
 
+
+---
+# Hacker Tools:
+
+- im ordner tools befinden sich beispiele für einfache hacker tools die zeigen wie unsicher die versionen 1-4 sind
+
+## Rainbow Table:
+[main_rainbow_table.cpp](tools/main_rainbow_table.cpp)
+
+- läuft mithilfe einer API 
+- Hashes werden mit dem des Programms verglichen und ausgewertet
+- zeigt wie schnell Passwörter mit Rainbow Tables geknackt werden können
+
+## Brute Force:
+[main_brute_force.cpp](tools/main_brute_force.cpp)
+
+- generiert alle möglichen Kombinationen von Passwörtern
+- 
+
 ---
 # Hinweis:
 
 - Projekt funktioniert nur auf Windows durch die Windows API aber man kann dies mit anderen librarys umgehen
 - ersatz für windows die API wären librarys wie chrono oder ctime
 - Compiler muss mindestens auf c++ 17 sein um es nutzen zu können
+- WICHTIG: alle only header files müssen im include ordner liegen (generell nicht vom Projekt entfernt werden)!
 
 ## Repo klonen:
 

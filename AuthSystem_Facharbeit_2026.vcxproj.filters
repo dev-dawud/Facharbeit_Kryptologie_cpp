@@ -18,7 +18,7 @@
     <ClCompile Include="include\md5.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="tools\main_rainbow_table.cpp">
+    <ClCompile Include="tools\main_brute_force.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
