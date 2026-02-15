@@ -64,6 +64,12 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 
 - generiert alle möglichen Kombinationen von Passwörtern
 
+## Main tool:
+[main_hack.cpp](tools/main_hack.cpp)
+
+- nutzt die rockyou.txt Passwortliste und die API um als erstes Passwörter zu knacken die in einer Rainbow Table sind
+- brute force als letzte option um alle möglichen Kombinationen durchzugehen, falls das Passwort nicht in der Rainbow Table ist
+
 ---
 # Hinweis:
 
