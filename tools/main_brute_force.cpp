@@ -7,7 +7,9 @@ void bruteForce() {
     // Das sind alle mögliche Kombinationen die durch gegeangen werden
     std::string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
 
-	std::string password = "ceslj";
+    // Hier kann man sein Passwort setzen bzw selber eingeben
+	std::string password = "z!9";
+
 	std::string passwordVersuch;
 
     // 1. Kombination von 1 Zeichen
