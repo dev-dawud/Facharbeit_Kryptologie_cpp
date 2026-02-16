@@ -129,7 +129,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\md5.cpp" />
-    <ClCompile Include="tools\main_hack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AuthManager-v5.h" />

@@ -63,23 +63,26 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 [main_brute_force.cpp](tools/main_brute_force.cpp)
 
 - generiert alle möglichen Kombinationen von Passwörtern
+- ab 5 stelliges Passwort dauert es zu lange (zum Test lieber 3-4 stelliges verwenden)
 
 ## Main tool:
 [main_hack.cpp](tools/main_hack.cpp)
 
 - nutzt die rockyou.txt Passwortliste und die API um als erstes Passwörter zu knacken die in einer Rainbow Table sind
 - brute force als letzte option um alle möglichen Kombinationen durchzugehen, falls das Passwort nicht in der Rainbow Table ist
+- Programm erkennt automatisch ob es ein md5 oder sha256 hash ist
 
 ---
 # Hinweis:
 
-- Projekt funktioniert nur auf Windows durch die Windows API aber man kann dies mit anderen librarys umgehen
+- Projekt funktioniert nur auf Windows da es die Windows API nutzt aber man kann dies mit anderen librarys umgehen
 - ersatz für windows die API wären librarys wie chrono oder ctime
 - Compiler muss mindestens auf c++ 17 sein um es nutzen zu können
 - WICHTIG: alle only header files müssen im include ordner liegen (generell nicht vom Projekt entfernt werden)!
 - im ordner data befindet sich ein weiterer ordner namens list dort braucht man eine txt datei die man online runterladen kann rockyou.txt heißt die. Das ist eine Passwort liste mit über Millionen von Passwörtern die von Hackern oft verwendet wird. (diese bitte hinzufügen!)
+-  https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
 
-- Da das Programm in c++ geschrieben ist darf man nur eine einzige main Datein bzw Funktion haben. D.h. alle versionen müssen aus dem Projekt ausgeschlossen werden (siehe Bild 1). Am ende soll es so wie in Bild 2 aussehen wenn man Visual Studio nutzt. Alle versionen außer die gewünschte müssen ausgeschlossen werden
+- Da das Programm in c++ geschrieben ist darf man nur eine einzige main Funktion haben. D.h. alle versionen müssen aus dem Projekt ausgeschlossen werden (siehe Bild 1). Am ende soll es so wie in Bild 2 aussehen wenn man Visual Studio nutzt. Alle versionen außer die gewünschte müssen ausgeschlossen werden
 
 
 ![Bild für ausschließen aus dem Projekt](data/img/img1.png)
@@ -90,4 +93,5 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 ## Repo klonen:
 
 ```bash
-git clone [https://github.com/dev-dawud/Facharbeit_Kryptologie_cpp](https://github.com/dev-dawud/Facharbeit_Kryptologie_cpp)
+git clone https://github.com/dev-dawud/Facharbeit_Kryptologie_cpp.git
+```
