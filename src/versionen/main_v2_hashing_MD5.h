@@ -1,10 +1,8 @@
-#pragma once
-
 #include <iostream>
 #include <fstream>
-#include "../../include/md5.h" // einfache MD5 Implementierung durch eine einfache header only library
+#include "md5.h" //only header datei ist bereits im ordner include drinne also keine Download nötig 
 
-class MenueV2 {
+class Menue {
 
 public:
 
@@ -22,8 +20,7 @@ public:
 		std::cout << " Willkommen " << std::endl << std::endl;
 		std::cout << " 1. regristrieren\n"
 				  << " 2. anmelden\n"
-				  << " 3. anmelden\n"
-				  << " 4. beenden\n\n\n";
+				  << " 3. beenden\n\n\n";
 		std::cout << "******************************************" << std::endl << std::endl;
 
 		std::cin >> menueEingabe;
@@ -39,10 +36,6 @@ public:
 		break;
 		
 		case 3:
-			return;
-		break;
-		
-		case 4:
 			exit(0);
 		break;
 
@@ -68,7 +61,7 @@ public:
 		std::cin >> passwortEingabe;
 		
 
-		// passwort wird durch den MD5 algorithmus gehashed (also verschl�sselt) bevor es gespeichert wird
+		// passwort wird durch den MD5 algorithmus gehashed (also verschlüsselt) bevor es gespeichert wird
 		passwortEingabe = md5(passwortEingabe);
 
 		std::ofstream registrierung("data/user/v2_users_dat.txt", std::ios::app);
@@ -89,8 +82,8 @@ public:
 		std::cout << "Bitte gib dein Passwort ein: ";
 		std::cin >> passwortAnmeldung;
 
-		// wenn das Passwort das eingegeben wird dasselbe wie beid der Regristriereung ist, 
-		// kriegt es denselben Hashwert und kann mit dem der in der Datei gespeicherten Hash vergleichen
+		// wenn das Passwort das eingegeben wird dasselbe wie beid der Regristriereung ist, kriegt es denselben Hashwert
+		// hier wird es erneut gehashed damit es mit dem gespeicherten gehashten Passwort verglichen werden kann
 		passwortAnmeldung = md5(passwortAnmeldung);
 
 		std::ifstream anmeldung("data/user/v2_users_dat.txt");
@@ -131,3 +124,17 @@ public:
 
 
 };
+
+
+int main()
+{
+	Menue menue;
+
+	while (true) {
+
+		menue.menueAnzeige();
+
+	}
+	
+	return 0;
+}
