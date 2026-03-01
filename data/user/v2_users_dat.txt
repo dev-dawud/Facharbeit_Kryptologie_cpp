@@ -1,6 +1,2 @@
 david@gmail.com  3eb1b1e196cf7c4cc8aa5b9df009e986  David
-test@gmail.com  c10fedc1a97741855818849f936d2463  test
-test1@gmail.com  827ccb0eea8a706c4c34a16891f84e7b  test1
-leo@gmail.com  7640d72693a59b334395e4e5e331be23  leo
-mama@gmail.com  30c8e1ca872524fbf7ea5c519ca397ee  mama
-kz  4632a56eb5121851420cd54cb57849f3  uz
+test@gmail.com  3e45af4ca27ea2b03fc6183af40ea112  test

@@ -1,13 +1,14 @@
 #pragma once
+
 #include <iostream>		
 #include <fstream>
-#include <picosha2.h>
+#include "picosha2.h"
 #include <random>	
 
 
 // Backend Bereich des Programms
 // //In dieser Klasse sind die Funktionen für die Regristrierung und Anmeldung des users
-class AuthManager {
+class AuthManagerV5 {
 
 	
 private:

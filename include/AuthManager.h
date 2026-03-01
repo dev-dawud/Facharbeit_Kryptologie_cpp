@@ -5,10 +5,10 @@
 #include <random>	
 #include <thread>
 #include <chrono>
-#include <picosha2.h>
+#include "picosha2.h"
 #include <windows.h>
 
-class AuthManager {
+class AuthManagerV6 {
 
 private:
 
@@ -27,8 +27,6 @@ private:
 		"!@#$%^&*";
 
 	const std::string pepper = "d3r_p3pp3r_ist_imm3r_3in_f3st3r_w3rt_und_wird_imm3r_irg3ndwo_im_cod3_od3r_3xt3rn3_f3stplatt3_v3rst3ckt";
-
-
 
 	void ramLoeschen(std::string& eingabe) {
 

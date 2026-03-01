@@ -76,11 +76,12 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 # Hinweis:
 
 - Projekt funktioniert nur auf Windows da es die Windows API nutzt aber man kann dies mit anderen librarys umgehen
-- ersatz für windows die API wären librarys wie chrono oder ctime
+- ersatz für ``<windows.h>`` wären librarys wie ``<chrono>`` oder ``<ctime>``
 - Compiler muss mindestens auf c++ 17 sein um es nutzen zu können
 - WICHTIG: alle only header files müssen im include ordner liegen (generell nicht vom Projekt entfernt werden)!
 - im ordner data befindet sich ein weiterer ordner namens list dort braucht man eine txt datei die man online runterladen kann rockyou.txt heißt die. Das ist eine Passwort liste mit über Millionen von Passwörtern die von Hackern oft verwendet wird. (diese bitte hinzufügen!)
--  https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+- https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+- es kann sein das sich der der Virenscanner beim ausführen von den tools es blockiert. Deswegen müsste man das Projekt whitelisten. Windows defender ignoriert es aber bestimmte Virenprogramme könnten es als geafhr sehen (ist es aber nicht)!
 
 - Da das Programm in c++ geschrieben ist darf man nur eine einzige main Funktion haben. D.h. alle versionen müssen aus dem Projekt ausgeschlossen werden (siehe Bild 1). Am ende soll es so wie in Bild 2 aussehen wenn man Visual Studio nutzt. Alle versionen außer die gewünschte müssen ausgeschlossen werden
 

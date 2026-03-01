@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <md5.h>
-#include <picosha2.h>
+#include "../include/md5.h" 
+#include "../include/picosha2.h"
 
 void rainbowTable();
 void bruteForce();
@@ -183,7 +183,7 @@ void bruteForce() {
 
         for (char b : alphabet) {
 
-            passwordVersuch = std::string(1 , a) + b;
+            passwordVersuch = std::string(1, a) + b;
 
             if (typ == 32) {
 
@@ -286,6 +286,81 @@ void bruteForce() {
                             std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
                             return;
 
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    for (char a : alphabet) {
+
+        for (char b : alphabet) {
+
+            for (char c : alphabet) {
+
+                for (char d : alphabet) {
+
+                    for (char e : alphabet) {
+
+                        for (char f : alphabet) {
+
+                            passwordVersuch = std::string(1, a) + b + c + d + e + f;
+
+                            if (typ == 32) {
+
+                                versuchHash = md5(passwordVersuch);
+                            }
+                            else {
+
+                                picosha2::hash256_hex_string(passwordVersuch, versuchHash);
+                            }
+
+                            if (versuchHash == zielHash) {
+
+                                std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
+                                return;
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    for (char a : alphabet) {
+
+        for (char b : alphabet) {
+
+            for (char c : alphabet) {
+
+                for (char d : alphabet) {
+
+                    for (char e : alphabet) {
+
+                        for (char f : alphabet) {
+
+                            for (char g : alphabet) {
+
+                                passwordVersuch = std::string(1, a) + b + c + d + e + f + g;
+
+                                if (typ == 32) {
+
+                                    versuchHash = md5(passwordVersuch);
+                                }
+                                else {
+
+                                    picosha2::hash256_hex_string(passwordVersuch, versuchHash);
+                                }
+
+                                if (versuchHash == zielHash) {
+
+                                    std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
+                                    return;
+
+                                }
+                            }
                         }
                     }
                 }

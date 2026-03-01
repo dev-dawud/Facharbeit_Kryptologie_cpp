@@ -129,12 +129,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\md5.cpp" />
+    <ClCompile Include="src\final\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AuthManager-v5.h" />
     <ClInclude Include="include\AuthManager.h" />
     <ClInclude Include="include\md5.h" />
     <ClInclude Include="include\picosha2.h" />
+    <ClInclude Include="src\versionen\main_v1_unsicher.h" />
+    <ClInclude Include="src\versionen\main_v2_hashing_MD5.h" />
+    <ClInclude Include="src\versionen\main_v3_hashing_SHA256.h" />
+    <ClInclude Include="src\versionen\main_v4_salted_hashing.h" />
+    <ClInclude Include="src\versionen\main_v5_peppered_hashing.h" />
+    <ClInclude Include="src\versionen\main_v6_2fa.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>

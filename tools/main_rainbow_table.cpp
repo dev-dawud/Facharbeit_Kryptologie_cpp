@@ -22,7 +22,13 @@ void RainbowTable() {
 
 int main() {
 
-	RainbowTable();
+	while (true) {
+
+		RainbowTable();
+
+	}
+
+	
 
 	return 0;
 }
