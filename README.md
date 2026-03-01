@@ -8,7 +8,7 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 ---
 
 ## Version 1:
-[main_v1_unsicher.cpp](src/versionen/main_v1_unsicher.cpp)
+[main_v1_unsicher.cpp](src/versionen/main_v1_unsicher.h)
 
 - Passwörter sind in Klartext gespeichert
 - einfaches Konsolenmenü
@@ -16,19 +16,19 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 - dient als Grundlage für die anderen Versionen
 
 ## Version 2:
-[main_v2_hashing_MD5.cpp](src/versionen/main_v2_hashing_MD5.cpp)
+[main_v2_hashing_MD5.cpp](src/versionen/main_v2_hashing_MD5.h)
 
 - Passwörter werden durch MD5 gehasht
 - Passwörter dadurch nicht mehr im Klartext gespeichert
 
 ## Version 3:
-[main_v3_hashing_SHA256.cpp](src/versionen/main_v3_hashing_SHA256.cpp)
+[main_v3_hashing_SHA256.cpp](src/versionen/main_v3_hashing_SHA256.h)
 
 - umstellung auf moderneres kryptographisches Verfahren (SHA-256)
 - erhöhte Sicherheit gegenüber MD5
 
 ## Version 4:
-[main_v4_salted_hashing.cpp](src/versionen/main_v4_salted_hashing.cpp)
+[main_v4_salted_hashing.cpp](src/versionen/main_v4_salted_hashing.h)
 
 - Einführung von Salt
 - Wiederstandsfähiger gegenüber Rainbow Tables
@@ -36,13 +36,13 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 - Einführung vom entfernen sensible Daten aus dem ram
 
 ## Version 5:
-[main_v5_pepper.cpp](src/versionen/main_v5_peppered_hashing.cpp) | [AuthManager.h](src/versionen/AuthManager-v5.h)
+[main_v5_pepper.cpp](src/versionen/main_v5_peppered_hashing.h) | [AuthManager.h](src/versionen/AuthManager-v5.h)
 
 - einführung von einem nicht veränderbaren Peppers
 - Erschwert Angriffe
 
 ## Version 6:
-[main_v6_2fa.cpp](src/versionen/main_v6_2fa.cpp) | [AuthManager.h](src/versionen/AuthManager.h)
+[main_v6_2fa.cpp](src/versionen/main_v6_2fa.h) | [AuthManager.h](src/versionen/AuthManager.h)
 
 - Implementierung von 2fa (6 stelliger Sicherheitscode)
 
@@ -75,19 +75,12 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 ---
 # Hinweis:
 
-- Projekt funktioniert nur auf Windows da es die Windows API nutzt aber man kann dies mit anderen librarys umgehen
+- Projekt funktioniert nur auf Windows da es die ``<windows.h`` header datei nutzt
 - ersatz für ``<windows.h>`` wären librarys wie ``<chrono>`` oder ``<ctime>``
-- Compiler muss mindestens auf c++ 17 sein um es nutzen zu können
-- WICHTIG: alle only header files müssen im include ordner liegen (generell nicht vom Projekt entfernt werden)!
-- im ordner data befindet sich ein weiterer ordner namens list dort braucht man eine txt datei die man online runterladen kann rockyou.txt heißt die. Das ist eine Passwort liste mit über Millionen von Passwörtern die von Hackern oft verwendet wird. (diese bitte hinzufügen!)
-- https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
-- es kann sein das sich der der Virenscanner beim ausführen von den tools es blockiert. Deswegen müsste man das Projekt whitelisten. Windows defender ignoriert es aber bestimmte Virenprogramme könnten es als geafhr sehen (ist es aber nicht)!
-
-- Da das Programm in c++ geschrieben ist darf man nur eine einzige main Funktion haben. D.h. alle versionen müssen aus dem Projekt ausgeschlossen werden (siehe Bild 1). Am ende soll es so wie in Bild 2 aussehen wenn man Visual Studio nutzt. Alle versionen außer die gewünschte müssen ausgeschlossen werden
-
-
-![Bild für ausschließen aus dem Projekt](data/img/img1.png)
-![Bild für ausschließen aus dem Projekt](data/img/img2.png)
+- Compiler muss mindestens auf C++ 17 sein um es nutzen zu können
+- WICHTIG: alle only header files außer (versionen), müssen im include ordner liegen (generell nicht vom Projekt entfernt werden)!
+- WICHTIG: über github ``https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt`` muss man eine .txt datei herunterladen, um die tools nutzen zu können. Diese datei beinhaltet millionen von Passwörtern die geleaked wurden. Deswegen bitte nicht öffnen da dies den Pc sehr verlangsamt einfach unentpackt in den ``/data/list`` ordner verschieben.
+- Beim ausführen des Projekts kann es sein das sich bestimmte Virenscanner melden und das Programm blockieren. Um das Problem zuz lösen muss man den Projektordner im virenprogramm whitelisten. Windows defender ignoriert es aber bestimmte Virenprogramme könnten es als geafhr sehen (ist es aber nicht)!
 
 ---
 
