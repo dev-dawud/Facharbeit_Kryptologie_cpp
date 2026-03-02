@@ -56,6 +56,9 @@
     <ClInclude Include="src\versionen\main_v6_2fa.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\tools\tool_v1.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="data\list\rockyou.txt" />

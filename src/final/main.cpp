@@ -5,6 +5,7 @@
 #include "../versionen/main_v4_salted_hashing.h"
 #include "../versionen/main_v5_peppered_hashing.h"
 #include "../versionen/main_v6_2fa.h"
+#include "../tools/tool_v1.h"
 
 class Menue {
 public:
@@ -16,12 +17,17 @@ public:
 	MenueV5 menueV5;
 	MenueV6 menueV6;
 
+	Tool Tools;
+
 	void menueAnzeige() {
+
+
 
 		std::cout << "******************************************" << std::endl << std::endl;
 		std::cout << " Willkommen " << std::endl << std::endl;
 		std::cout << "1. Versionen\n"
-				  << "2. beenden\n\n";
+				  << "2. tools\n"
+				  << "3. beenden\n\n";
 		std::cout << "******************************************" << std::endl << std::endl;
 
 		int menueEingabe;
@@ -33,8 +39,12 @@ public:
 			case 1:
 				versionen();
 			break;
-
+			
 			case 2:
+				Tools.tool();
+			break;
+
+			case 3:
 				exit(0);
 			break;
 
