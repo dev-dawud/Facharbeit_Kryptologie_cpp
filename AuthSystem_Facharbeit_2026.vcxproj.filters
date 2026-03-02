@@ -56,6 +56,15 @@
     <ClInclude Include="src\versionen\main_v6_2fa.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="src\tools\main_brute_force.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\main_hack.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\main_rainbow_table.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="src\tools\tool_v1.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>

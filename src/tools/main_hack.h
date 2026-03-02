@@ -1,189 +1,172 @@
+#pragma once
+
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "../include/md5.h" 
-#include "../include/picosha2.h"
+#include "../../include/picosha2.h"
+#include "../../include/md5.h"
 
-void rainbowTable();
-void bruteForce();
+class mainTool {
+public: 
 
-std::string hash;
-std::string Zeile;
-std::string hashZeile;
-std::string passwordVersuch, password;
-std::string versuchHash, zielHash;
+    std::string hash;
+    std::string Zeile;
+    std::string hashZeile;
+    std::string passwordVersuch, password;
+    std::string versuchHash, zielHash;
 
-// Typ wird als erkennung für die Brute Force genutzt damit sie weiß ob es md5 oder sha algo ist
-int typ;
+    // Typ wird als erkennung für die Brute Force genutzt damit sie weiß ob es md5 oder sha algo ist
+    int typ;
 
-MD5 md5;
+    MD5 md5;
 
-void rainbowTable() {
+    void rainbowTable() {
 
-    bool gefunden = false;
-    bool APIgefunden = false;
-  
-
-    std::cout << "Bitte geben sie ihren Hash ein: ";
-    std::cin >> hash;
-
-    zielHash = hash;
-
-    if (hash.length() == 32) {
-
-		typ = 32;
-
-        std::cout << "Rainbowtable wird geladen...\n";
-
-        std::fstream tabelle("data/list/rockyou.txt");
+        bool gefunden = false;
+        bool APIgefunden = false;
 
 
-        while (std::getline(tabelle, Zeile)) {
+        std::cout << "Bitte geben sie ihren Hash ein: ";
+        std::cin >> hash;
 
-            hashZeile = md5(Zeile);
+        zielHash = hash;
 
-            if (hash == hashZeile) {
+        if (hash.length() == 32) {
 
-                gefunden = true;
+            typ = 32;
 
-                break;
+            std::cout << "Rainbowtable wird geladen...\n";
+
+            std::fstream tabelle("data/list/rockyou.txt");
+
+
+            while (std::getline(tabelle, Zeile)) {
+
+                hashZeile = md5(Zeile);
+
+                if (hash == hashZeile) {
+
+                    gefunden = true;
+
+                    break;
+                }
+
             }
 
-        }
+            tabelle.close();
 
-        tabelle.close();
+            if (gefunden == true) {
 
-        if (gefunden == true) {
+                std::cout << "Passwort gefunden: " << Zeile << std::endl;
 
-            std::cout << "Passwort gefunden: " << Zeile << std::endl;
-
-        }
-        else {
-
-            std::cout << "Passwort wird weiter gesucht...\n";
-
-            std::string email = "davidwahab869@gmail.com";
-            std::string code = "61f152f62c4a29f6";
-
-            std::string url = "https://md5decrypt.net/en/Api/api.php?hash=" + hash + "&hash_type=md5&email=" + email + "&code=" + code;
-
-
-            std::system(("start \"\" \"" + url + "\"").c_str());
-
-
-            if (APIgefunden == true) {
-
-                std::cout << "Passwort gefunden!";
-
-                return;
             }
             else {
 
-                std::cout << "\nPasswort nicht gefunden\n" << std::endl;
-				std::cout << "Brute Force wird gestartet... \n" << std::endl;
+                std::cout << "Passwort wird weiter gesucht...\n";
 
-                bruteForce();
+                std::string email = "davidwahab869@gmail.com";
+                std::string code = "61f152f62c4a29f6";
+
+                std::string url = "https://md5decrypt.net/en/Api/api.php?hash=" + hash + "&hash_type=md5&email=" + email + "&code=" + code;
+
+
+                std::system(("start \"\" \"" + url + "\"").c_str());
+
+
+                if (APIgefunden == true) {
+
+                    std::cout << "Passwort gefunden!";
+
+                    return;
+                }
+                else {
+
+                    std::cout << "\nPasswort nicht gefunden\n" << std::endl;
+                    std::cout << "Brute Force wird gestartet... \n" << std::endl;
+
+                    bruteForce(zielHash, typ);
+                }
+
+
+            }
+        }
+        else if (hash.length() == 64) {
+
+            typ = 64;
+
+            std::cout << "Rainbowtable wird geladen...\n";
+
+            std::fstream tabelle("data/list/rockyou.txt");
+
+
+            while (std::getline(tabelle, Zeile)) {
+
+                picosha2::hash256_hex_string(Zeile, hashZeile);
+
+                if (hash == hashZeile) {
+
+                    gefunden = true;
+
+                    break;
+                }
+
             }
 
+            tabelle.close();
 
-        }
-    }
-    else if (hash.length() == 64) {
+            if (gefunden == true) {
 
-		typ = 64;  
+                std::cout << "Passwort gefunden: " << Zeile << std::endl;
 
-		std::cout << "Rainbowtable wird geladen...\n";
-
-        std::fstream tabelle("data/list/rockyou.txt");
-
-
-        while (std::getline(tabelle, Zeile)) {
-
-            picosha2::hash256_hex_string(Zeile, hashZeile);
-
-            if (hash == hashZeile) {
-
-                gefunden = true;
-
-                break;
-            }
-
-        }
-
-        tabelle.close();
-
-        if (gefunden == true) {
-
-            std::cout << "Passwort gefunden: " << Zeile << std::endl;
-
-        }
-        else {
-
-            std::string email = "davidwahab869@gmail.com";
-            std::string code = "61f152f62c4a29f6";
-
-            std::string url = "https://md5decrypt.net/en/Api/api.php?hash=" + hash + "&hash_type=sha256&email=" + email + "&code=" + code;
-
-
-            std::system(("start \"\" \"" + url + "\"").c_str());
-
-            APIgefunden = true;
-
-            if (APIgefunden == true) {
-
-                std::cout << "Passwort gefunden!";
-
-                return;
             }
             else {
 
-                std::cout << "\nPasswort nicht gefunden\n" << std::endl;
-				std::cout << "Brute Force wird gestartet... \n" << std::endl;
+                std::string email = "davidwahab869@gmail.com";
+                std::string code = "61f152f62c4a29f6";
 
-                bruteForce();
+                std::string url = "https://md5decrypt.net/en/Api/api.php?hash=" + hash + "&hash_type=sha256&email=" + email + "&code=" + code;
+
+
+                std::system(("start \"\" \"" + url + "\"").c_str());
+
+                APIgefunden = true;
+
+                if (APIgefunden == true) {
+
+                    std::cout << "Passwort gefunden!";
+
+                    return;
+                }
+                else {
+
+                    std::cout << "\nPasswort nicht gefunden\n" << std::endl;
+                    std::cout << "Brute Force wird gestartet... \n" << std::endl;
+
+                    bruteForce(zielHash, typ);
+                }
+
             }
 
-        }
 
-
-    }
-    else {
-        std::cout << "Ungültiger Hashwert!" << std::endl;
-    }
-}
-
-void bruteForce() {
-
-    std::string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-
-    std::cout << "... \n";
-
-    for (char a : alphabet) {
-
-        passwordVersuch = a;
-
-        if (typ == 32) {
-
-            versuchHash = md5(passwordVersuch);
         }
         else {
-
-            picosha2::hash256_hex_string(passwordVersuch, versuchHash);
-        }
-
-        if (versuchHash == zielHash) {
-
-            std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
-            return;
-
+            std::cout << "Ungültiger Hashwert!" << std::endl;
         }
     }
 
-    for (char a : alphabet) {
+    void bruteForce(std::string zielHash , int typ) {
 
-        for (char b : alphabet) {
+        std::string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+        std::string passwordVersuch;
+        std::string versuchHash;
 
-            passwordVersuch = std::string(1, a) + b;
+        std::cout << "... \n";
+
+        // 1. Kombination von 1 Zeichen
+        // : bedeutet dass a jedes zeichen aus dem alphabet annimmt
+        for (char a : alphabet) {
+
+            passwordVersuch = a;
 
             if (typ == 32) {
 
@@ -201,15 +184,12 @@ void bruteForce() {
 
             }
         }
-    }
 
-    for (char a : alphabet) {
+        for (char a : alphabet) {
 
-        for (char b : alphabet) {
+            for (char b : alphabet) {
 
-            for (char c : alphabet) {
-
-                passwordVersuch = std::string(1, a) + b + c;
+                passwordVersuch = std::string(1, a) + b;
 
                 if (typ == 32) {
 
@@ -228,17 +208,14 @@ void bruteForce() {
                 }
             }
         }
-    }
 
-    for (char a : alphabet) {
+        for (char a : alphabet) {
 
-        for (char b : alphabet) {
+            for (char b : alphabet) {
 
-            for (char c : alphabet) {
+                for (char c : alphabet) {
 
-                for (char d : alphabet) {
-
-                    passwordVersuch = std::string(1, a) + b + c + d;
+                    passwordVersuch = std::string(1, a) + b + c;
 
                     if (typ == 32) {
 
@@ -258,19 +235,16 @@ void bruteForce() {
                 }
             }
         }
-    }
 
-    for (char a : alphabet) {
+        for (char a : alphabet) {
 
-        for (char b : alphabet) {
+            for (char b : alphabet) {
 
-            for (char c : alphabet) {
+                for (char c : alphabet) {
 
-                for (char d : alphabet) {
+                    for (char d : alphabet) {
 
-                    for (char e : alphabet) {
-
-                        passwordVersuch = std::string(1, a) + b + c + d + e;
+                        passwordVersuch = std::string(1, a) + b + c + d;
 
                         if (typ == 32) {
 
@@ -291,21 +265,18 @@ void bruteForce() {
                 }
             }
         }
-    }
 
-    for (char a : alphabet) {
+        for (char a : alphabet) {
 
-        for (char b : alphabet) {
+            for (char b : alphabet) {
 
-            for (char c : alphabet) {
+                for (char c : alphabet) {
 
-                for (char d : alphabet) {
+                    for (char d : alphabet) {
 
-                    for (char e : alphabet) {
+                        for (char e : alphabet) {
 
-                        for (char f : alphabet) {
-
-                            passwordVersuch = std::string(1, a) + b + c + d + e + f;
+                            passwordVersuch = std::string(1, a) + b + c + d + e;
 
                             if (typ == 32) {
 
@@ -327,23 +298,20 @@ void bruteForce() {
                 }
             }
         }
-    }
 
-    for (char a : alphabet) {
+        for (char a : alphabet) {
 
-        for (char b : alphabet) {
+            for (char b : alphabet) {
 
-            for (char c : alphabet) {
+                for (char c : alphabet) {
 
-                for (char d : alphabet) {
+                    for (char d : alphabet) {
 
-                    for (char e : alphabet) {
+                        for (char e : alphabet) {
 
-                        for (char f : alphabet) {
+                            for (char f : alphabet) {
 
-                            for (char g : alphabet) {
-
-                                passwordVersuch = std::string(1, a) + b + c + d + e + f + g;
+                                passwordVersuch = std::string(1, a) + b + c + d + e + f;
 
                                 if (typ == 32) {
 
@@ -366,14 +334,45 @@ void bruteForce() {
                 }
             }
         }
+
+        for (char a : alphabet) {
+
+            for (char b : alphabet) {
+
+                for (char c : alphabet) {
+
+                    for (char d : alphabet) {
+
+                        for (char e : alphabet) {
+
+                            for (char f : alphabet) {
+
+                                for (char g : alphabet) {
+
+                                    passwordVersuch = std::string(1, a) + b + c + d + e + f + g;
+
+                                    if (typ == 32) {
+
+                                        versuchHash = md5(passwordVersuch);
+                                    }
+                                    else {
+
+                                        picosha2::hash256_hex_string(passwordVersuch, versuchHash);
+                                    }
+
+                                    if (versuchHash == zielHash) {
+
+                                        std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
+                                        return;
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
-}
+};
 
-
-int main() {
-
-	rainbowTable();
-
-
-	return 0;
-}
