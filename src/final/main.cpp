@@ -5,7 +5,7 @@
 #include "../versionen/main_v4_salted_hashing.h"
 #include "../versionen/main_v5_peppered_hashing.h"
 #include "../versionen/main_v6_2fa.h"
-#include "../tools/tool_v1.h"
+#include "../tools/tool.h"
 
 class Menue {
 public:

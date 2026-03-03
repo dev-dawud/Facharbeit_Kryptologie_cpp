@@ -65,7 +65,7 @@
     <ClInclude Include="src\tools\main_rainbow_table.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="src\tools\tool_v1.h">
+    <ClInclude Include="src\tools\tool.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

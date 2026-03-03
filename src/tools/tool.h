@@ -20,7 +20,8 @@ public:
 		std::cout << "1. Datei auslesen\n"
 				  << "2. Rainbow Table\n"
 				  << "3. Brute Force\n"
-				  << "4. beenden\n\n";
+				  << "4. automatisch\n"
+				  << "5. beenden\n\n";
 		std::cout << "******************************************" << std::endl << std::endl;
 
 		std::cin >> toolEingabe;
@@ -40,6 +41,10 @@ public:
 		break;
 
 		case 4:
+			automatisch();
+		break;
+		
+		case 5:
 			exit(0);
 		break;
 
@@ -148,4 +153,11 @@ public:
 
 		bruteForce.erkenneHash();
 	}	
+
+	void automatisch() {
+		mainTool maintool;
+
+		maintool.rainbowTable();
+		maintool.bruteForce(maintool.zielHash, maintool.typ);
+	}
 };	

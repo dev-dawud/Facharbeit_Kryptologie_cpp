@@ -139,7 +139,7 @@
     <ClInclude Include="src\tools\main_brute_force.h" />
     <ClInclude Include="src\tools\main_hack.h" />
     <ClInclude Include="src\tools\main_rainbow_table.h" />
-    <ClInclude Include="src\tools\tool_v1.h" />
+    <ClInclude Include="src\tools\tool.h" />
     <ClInclude Include="src\versionen\main_v1_unsicher.h" />
     <ClInclude Include="src\versionen\main_v2_hashing_MD5.h" />
     <ClInclude Include="src\versionen\main_v3_hashing_SHA256.h" />
