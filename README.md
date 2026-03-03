@@ -102,8 +102,7 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 
 ### 3. Testlauf:
 - Wenn alle schritte befolgt wurden kann man auf ausführen klicken und eine Konsole popt auf
-- da kann man sich zwischen Versionen entscheiden und jeweils registrieren oder anmelden beim registrieren wird lokal im ``data/user`` für jede Version eine .txt gebildet. Dort kann man sich die anmelde Daten den hash durchlesen
-- Über tools kann man sein eigenen account testen wie stark das Passwort ist und wie stark die jeweilige Version den user schützt
+- da kann man sich zwischen Versionen entscheiden und jeweils registrieren oder anmelden beim registrieren wird lokal im ``data/user`` für jede Version eine .txt gebildet. Durch die tools funktion kann man diese Dateien auslesen und hashwerte werden gezigt damit man diese auf deren Sicherheit testen kann. Auch kann man sein eigenen account testen wie stark das Passwort ist.
 
 ## Repo klonen:
 
