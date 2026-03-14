@@ -43,6 +43,15 @@ public:
             return;
         }
 
+		auto start = std::chrono::high_resolution_clock::now();
+
 		maintool.bruteForce(hashPassword, typ);
+
+		auto end = std::chrono::high_resolution_clock::now();
+        
+        std::chrono::duration<double> laenge = end - start;
+
+		std::cout << "Es hat " << laenge.count() << " Sekunden gedauert\n";
+
     }
 };
