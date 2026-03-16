@@ -64,6 +64,7 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 
 - generiert alle möglichen Kombinationen von Passwörtern
 - ab 5 stelliges Passwort dauert es zu lange (zum Test lieber 3-4 stelliges verwenden)
+- Zeit wird gemessen für die länge des Brute Force versuches
 
 ## Main tool:
 [main_hack.cpp](tools/main_hack.cpp)

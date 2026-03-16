@@ -154,9 +154,12 @@ public:
         }
     }
 
-    void bruteForce(std::string zielHash , int typ) {
+    // dieser BruteForce code ist nicht optimiert und effozient, er dient einfach nur umd die funktionalität zu zeigen
+   
+    void bruteForce(/*std::string alphabet,*/std::string zielHash, int typ) {
 
         std::string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+
         std::string passwordVersuch;
         std::string versuchHash;
 
@@ -374,5 +377,26 @@ public:
             }
         }
     }
+    /*
+    void threads() {
+
+        std::string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+
+        std::string teil1 = "abcdefghijklmnopqrstuvwxyz";
+        std::string teil2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        std::string teil3 = "0123456789";
+        std::string teil4 = "!@#$ % ^&*";
+
+		std::thread Thread1(bruteForce, teil1, zielHash, typ);
+		std::thread Thread2(bruteForce, teil2, zielHash, typ);
+		std::thread Thread3(bruteForce, teil3, zielHash, typ);
+		std::thread Thread4(bruteForce, teil4, zielHash, typ);
+
+		Thread1.join();
+		Thread2.join();
+		Thread3.join();
+		Thread4.join();
+    }
+    */
 };
 
