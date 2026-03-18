@@ -34,7 +34,7 @@ public:
 
             typ = 64;
 
-            std::cout << "hahs ist SHA-256\n";
+            std::cout << "hash ist SHA-256\n";
         }
         else {
 

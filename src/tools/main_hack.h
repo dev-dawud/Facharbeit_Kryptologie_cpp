@@ -39,6 +39,7 @@ public:
 
             std::fstream tabelle("data/list/rockyou.txt");
 
+			auto start = std::chrono::high_resolution_clock::now();
 
             while (std::getline(tabelle, Zeile)) {
 
@@ -47,6 +48,11 @@ public:
                 if (hash == hashZeile) {
 
                     gefunden = true;
+
+					auto end = std::chrono::high_resolution_clock::now();
+                    std::chrono::duration<double> laenge = end - start;
+
+                    std::cout << "Es hat " << laenge.count() << " Sekunden gedauert\n";
 
                     break;
                 }
@@ -61,6 +67,11 @@ public:
 
             }
             else {
+
+                auto end = std::chrono::high_resolution_clock::now();
+                std::chrono::duration<double> laenge = end - start;
+
+                std::cout << "Es hat " << laenge.count() << " Sekunden gedauert\n";
 
                 std::cout << "Passwort wird weiter gesucht...\n";
 
@@ -82,9 +93,20 @@ public:
                 else {
 
                     std::cout << "\nPasswort nicht gefunden\n" << std::endl;
-                    std::cout << "Brute Force wird gestartet... \n" << std::endl;
+                    char eingabe;
 
-                    bruteForce(zielHash, typ);
+                    std::cout << "\nMöchtest du BruteForce starten?\n";
+
+					std::cin >> eingabe;
+
+                    if (eingabe == 'J' || eingabe == 'j') {
+
+                        std::cout << "Brute Force wird gestartet... \n" << std::endl;
+                        bruteForce(zielHash, typ);
+                    }
+                    else {
+                        return;
+                    }
                 }
 
 
@@ -98,6 +120,7 @@ public:
 
             std::fstream tabelle("data/list/rockyou.txt");
 
+            auto start = std::chrono::high_resolution_clock::now();
 
             while (std::getline(tabelle, Zeile)) {
 
@@ -106,6 +129,11 @@ public:
                 if (hash == hashZeile) {
 
                     gefunden = true;
+
+                    auto end = std::chrono::high_resolution_clock::now();
+                    std::chrono::duration<double> laenge = end - start;
+
+                    std::cout << "Es hat " << laenge.count() << " Sekunden gedauert\n";
 
                     break;
                 }
@@ -127,9 +155,12 @@ public:
                 std::string url = "https://md5decrypt.net/en/Api/api.php?hash=" + hash + "&hash_type=sha256&email=" + email + "&code=" + code;
 
 
-                std::system(("start \"\" \"" + url + "\"").c_str());
+                auto end = std::chrono::high_resolution_clock::now();
+                std::chrono::duration<double> laenge = end - start;
 
-                APIgefunden = true;
+                std::cout << "Es hat " << laenge.count() << " Sekunden gedauert\n";
+
+                std::system(("start \"\" \"" + url + "\"").c_str());
 
                 if (APIgefunden == true) {
 
@@ -140,9 +171,21 @@ public:
                 else {
 
                     std::cout << "\nPasswort nicht gefunden\n" << std::endl;
-                    std::cout << "Brute Force wird gestartet... \n" << std::endl;
 
-                    bruteForce(zielHash, typ);
+					char eingabe2;
+
+                    std::cout << "\nMöchtest du BruteForce starten?\n";
+
+					std::cin >> eingabe2;
+
+                        if (eingabe2 == 'J' || eingabe2 == 'j') {
+
+                            std::cout << "Brute Force wird gestartet... \n" << std::endl;
+                            bruteForce(zielHash, typ);
+                        }
+                        else {
+                            return;
+                        }                   
                 }
 
             }
