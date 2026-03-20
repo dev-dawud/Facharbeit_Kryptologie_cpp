@@ -50,29 +50,36 @@ Ich habe das ganze bewusst in mehrere Versionen unterteilt, um zu zeigen, wie si
 ---
 # Hacker Tools:
 
-- im ordner tools befinden sich beispiele für einfache hacker tools die zeigen wie unsicher die versionen 1-4 sind
+- im ordner tools befinden sich beispiele für einfache hacker tools, die zeigen, wie unsicher die versionen 1-4 sind.
+- das gesamte toolset wird über tool.h gesteuert
+- Im Hauptmenü kann man pber die 2. Optionen die tools aufrufen und testen. 
+- es gibt 4 tools die unterschiedliche Angriffmethoden simulieren:
 
-## Rainbow Table:
-[main_rainbow_table.cpp](tools/main_rainbow_table.cpp)
+## 1. Rainbow Table:
+[main_rainbow_table.h](tools/main_rainbow_table.h)
 
 - läuft mithilfe einer API 
 - Hashes werden mit dem des Programms verglichen und ausgewertet
-- zeigt wie schnell Passwörter mit Rainbow Tables geknackt werden können
+- zeigt wie schnell Passwörter durch Rainbow Tables geknackt werden können
 
-## Brute Force:
-[main_brute_force.cpp](tools/main_brute_force.cpp)
+## 2. Brute Force:
+[main_brute_force.h](tools/main_brute_force.h)
 
 - generiert alle möglichen Kombinationen von Passwörtern
 - ab 5 stelliges Passwort dauert es zu lange (zum Test lieber 3-4 stelliges verwenden)
 - Zeit wird gemessen für die länge des Brute Force versuches
+- das ganze funktioniert nur mit Passwörtern die 7 stellig sind
 
 ## Main tool:
-[main_hack.cpp](tools/main_hack.cpp)
+[main_hack.h](tools/main_hack.h)
 
 - nutzt die rockyou.txt Passwortliste und die API um als erstes Passwörter zu knacken die in einer Rainbow Table sind
 - brute force als letzte option um alle möglichen Kombinationen durchzugehen, falls das Passwort nicht in der Rainbow Table ist
 - Programm erkennt automatisch ob es ein md5 oder sha256 hash ist
 
+---
+## Hash Generator:
+- Über die 3. Option im Hauptmenü kann man sich hashes erstellen lassen mit salt oder ohne salt um direkt danach mit dne tools zu testen wie sicher diese sind.
 ---
 # Hinweis:
 
