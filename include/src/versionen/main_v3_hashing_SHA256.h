@@ -2,18 +2,18 @@
 
 #include <iostream>
 #include <fstream>
-#include "../../include/picosha2.h"
+#include "../include/librarys/picosha2.h"
 
 class MenueV3 {
+private:
+
+	std::string dEmail, dName, dPasswort;
 
 public:
 
-	int menueEingabe;
-	std::string nameEingabe, emailEingabe, passwortEingabe; 
-	std::string emailAnmeldung, passwortAnmeldung;	
-	std::string dEmail, dName, dPasswort;	
-
 	void menueAnzeige() {
+
+		int menueEingabe;
 
 		std::cout << "******************************************" << std::endl << std::endl;
 		std::cout << " Willkommen " << std::endl << std::endl;
@@ -30,7 +30,7 @@ public:
 		switch (menueEingabe) {
 
 		case 1:
-			regristrierung();
+			registrierung();
 		break;
 
 		case 2:
@@ -46,14 +46,16 @@ public:
 		break;
 
 		default:
-			std::cout << "Ungueltige Eingabe, bitte mach es erneut." << std::endl;
+			std::cout << "Ungueltige Eingabe, bitte versuche es erneut." << std::endl;
 		break;
 
 		}
 
 	}
 
-	void regristrierung() {
+	void registrierung() {
+
+		std::string nameEingabe, emailEingabe, passwortEingabe;
 
 		std::cout << "Name: ";
 		std::cin >> nameEingabe;
@@ -78,11 +80,13 @@ public:
 		registrierung << emailEingabe << "  " << hash_hex_passwort << "  " << nameEingabe << std::endl;
 		registrierung.close();
 
-		std::cout << "Regristrierung erfolgreich\n";
+		std::cout << "Registrierung erfolgreich\n";
 
 	}
 
 	void anmelden() {
+
+		std::string emailAnmeldung, passwortAnmeldung;
 
 		std::cout << "Bitte gib deine E-Mail ein: ";
 		std::cin >> emailAnmeldung;

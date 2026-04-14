@@ -2,20 +2,16 @@
 
 #include <iostream>		
 #include <fstream>
-#include "picosha2.h"
-#include <random>	
-
+#include "../include/librarys/picosha2.h"
+#include <random>
 
 // Backend Bereich des Programms
-// //In dieser Klasse sind die Funktionen für die Regristrierung und Anmeldung des users
+// In dieser Klasse sind die Funktionen für die Regristrierung und Anmeldung des users
 class AuthManagerV5 {
 
 	
 private:
 
-	int menueEingabe;
-	std::string nameEingabe, emailEingabe, passwortEingabe;
-	std::string emailAnmeldung, passwortAnmeldung;
 	std::string dEmail, dName, dPasswort, dSalt;
 	std::string salt, passwortSalt;
 
@@ -30,7 +26,7 @@ private:
 
 
 
-	// ramLoeschen() ist privat weil man es nur intern in der klasse benutzen kann um sicher zu sein dass daten wie passwörter nicht im ram verbleiben
+	// ramLoeschen() ist privat weil man es nur intern in der klasse benutzen darf um sicher zu sein dass daten wie passwörter nicht im ram verbleiben
 	void ramLoeschen(std::string& eingabe) {
 
 	
@@ -65,7 +61,6 @@ private:
 		}
 
 	}
-
 
 	// Öffentlicher Bereich der Klasse 
 	// Hier sind die Funktionen für die Registrierung und Anmeldung des users
@@ -107,8 +102,8 @@ public:
 				std::string kombi = passwort + pepper + dSalt;
 
 				std::string berechneterHash;
-				picosha2::hash256_hex_string(kombi, berechneterHash);
 
+				picosha2::hash256_hex_string(kombi, berechneterHash);
 
 				ramLoeschen(kombi);
 

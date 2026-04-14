@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+<<<<<<< HEAD:src/versionen/main_v2_hashing_MD5.h
 #include "md5.h" //only header datei ist bereits im ordner include drinne also keine Download nötig 
 
 class Menue {
@@ -11,14 +12,26 @@ public:
 	std::string emailAnmeldung, passwortAnmeldung;		
 	std::string dEmail, dName, dPasswort;		
 
+=======
+#include "../include/librarys/md5.h" // einfache MD5 Implementierung durch eine einfache header only library
+
+class MenueV2 {
+private:
+>>>>>>> 8165ed4 (hinzufügen einer hashgenerator Klasse und übersichtlichere main.cpp / anpassen der Odnerstrukur):include/src/versionen/main_v2_hashing_MD5.h
 
 	MD5 md5;
 
+	std::string dEmail, dName, dPasswort;
+
+public:
+
 	void menueAnzeige() {
+
+		int menueEingabe;
 
 		std::cout << "******************************************" << std::endl << std::endl;
 		std::cout << " Willkommen " << std::endl << std::endl;
-		std::cout << " 1. regristrieren\n"
+		std::cout << " 1. registrieren\n"
 				  << " 2. anmelden\n"
 				  << " 3. beenden\n\n\n";
 		std::cout << "******************************************" << std::endl << std::endl;
@@ -28,7 +41,7 @@ public:
 		switch (menueEingabe) {
 
 		case 1:
-			regristrierung();
+			registrierung();
 		break;
 
 		case 2:
@@ -40,14 +53,16 @@ public:
 		break;
 
 		default:
-			std::cout << "Ungueltige Eingabe, bitte mach es erneut" << std::endl;
+			std::cout << "Ungueltige Eingabe, bitte versuche es erneut" << std::endl;
 		break;
 
 		}
 
 	}
 
-	void regristrierung() {
+	void registrierung() {
+
+		std::string nameEingabe, emailEingabe, passwortEingabe;
 
 		std::cout << "Name: ";
 		std::cin >> nameEingabe;
@@ -61,7 +76,7 @@ public:
 		std::cin >> passwortEingabe;
 		
 
-		// passwort wird durch den MD5 algorithmus gehashed (also verschlüsselt) bevor es gespeichert wird
+		// passwort wird durch den MD5 algorithmus gehashed bevor es gespeichert wird
 		passwortEingabe = md5(passwortEingabe);
 
 		std::ofstream registrierung("data/user/v2_users_dat.txt", std::ios::app);
@@ -69,11 +84,13 @@ public:
 		registrierung.close();
 
 
-		std::cout << "Regristrierung erfolgreich!\n\n";
+		std::cout << "Registrierung erfolgreich!\n\n";
 
 	}
 
 	void anmelden() {
+
+		std::string emailAnmeldung, passwortAnmeldung;
 
 		std::cout << "Bitte gib deine E-Mail ein: ";
 		std::cin >> emailAnmeldung;
@@ -82,8 +99,13 @@ public:
 		std::cout << "Bitte gib dein Passwort ein: ";
 		std::cin >> passwortAnmeldung;
 
+<<<<<<< HEAD:src/versionen/main_v2_hashing_MD5.h
 		// wenn das Passwort das eingegeben wird dasselbe wie beid der Regristriereung ist, kriegt es denselben Hashwert
 		// hier wird es erneut gehashed damit es mit dem gespeicherten gehashten Passwort verglichen werden kann
+=======
+		// wenn das Passwort das eingegeben wird dasselbe wie beid der Registriereung ist, 
+		// kriegt es denselben Hashwert und kann mit dem der in der Datei gespeicherten Hash vergleichen
+>>>>>>> 8165ed4 (hinzufügen einer hashgenerator Klasse und übersichtlichere main.cpp / anpassen der Odnerstrukur):include/src/versionen/main_v2_hashing_MD5.h
 		passwortAnmeldung = md5(passwortAnmeldung);
 
 		std::ifstream anmeldung("data/user/v2_users_dat.txt");

@@ -1,17 +1,10 @@
 #include <iostream>
 #include <fstream>
-#include "../../include/picosha2.h"
-#include <random> // Für die Generierung von Salt brauche ich die random library
+#include "../include/librarys/picosha2.h"
+#include <random> // Für die Generierung von Salt braucht man die random library
 
 class MenueV4 {
-
-public:
-
-	int menueEingabe;
-	std::string nameEingabe, emailEingabe, passwortEingabe; 
-	std::string emailAnmeldung, passwortAnmeldung;		
-	std::string dEmail, dName, dPasswort , dSalt;
-	std::string salt , passwortSalt;
+private:
 
 	// Für den Salt alle möglichen Zeichen die vorkommen können oder benutzt werden können
 	const std::string zeichen =
@@ -20,8 +13,13 @@ public:
 		"0123456789"
 		"!@#$%^&*";
 
+	std::string dEmail, dName, dPasswort, dSalt;
+
+public:
 
 	void menueAnzeige() {
+
+		int menueEingabe;
 
 		std::cout << "******************************************" << std::endl << std::endl;
 		std::cout << " Willkommen " << std::endl << std::endl;
@@ -36,7 +34,7 @@ public:
 		switch (menueEingabe) {
 
 		case 1:
-			regristrierung();
+			registrierung();
 		break;
 
 		case 2:
@@ -52,14 +50,17 @@ public:
 		break;
 
 		default:
-			std::cout << "Ungültige Eingabe, bitte mach es erneut." << std::endl;
+			std::cout << "Ungültige Eingabe, bitte versuche es erneut." << std::endl;
 		break;
 
 		}
 
 	}
 
-	void regristrierung() {
+	void registrierung() {
+
+		std::string nameEingabe, emailEingabe, passwortEingabe;
+		std::string salt, passwortSalt;
 
 		std::cout << "Name: ";
 		std::cin >> nameEingabe;
@@ -72,7 +73,7 @@ public:
 		std::cout << "Passwort: ";
 		std::cin >> passwortEingabe;
 
-		// <random> bibliothek um eine zufallskette zu generieren:  https://learn.microsoft.com/en-us/cpp/standard-library/random?view=msvc-170 
+		// <random> bibliothek um eine zufallskette zu generieren Quelle (für die Nutzung): https://learn.microsoft.com/en-us/cpp/standard-library/random?view=msvc-170 
 		// rd wird definiert um eine Zufallszahl zu generieren die als Seed für den Generator dient
 		std::random_device rd;
 
@@ -81,17 +82,17 @@ public:
 
 		std::uniform_int_distribution<> dist(0, zeichen.size() - 1);
 
-		// Generiere einen Salt mit einer Länge von 16 Zeichen
+		// Generiert einen Salt mit einer Länge von 16 Zeichen
 		for (int i = 0; i < 16; ++i) {
 
 			salt += zeichen[dist(generator)];
 		
 		}
 
-		passwortEingabe += salt; // Salt wird zum Passwort hinzufügefugt
-
+		passwortEingabe += salt; 
 
 		std::string hash_hex_passwort;
+
 		picosha2::hash256_hex_string(passwortEingabe, hash_hex_passwort); 
 
 
@@ -102,11 +103,13 @@ public:
 		ramLoeschen(passwortEingabe);
 		ramLoeschen(salt);
 
-		std::cout << "Regristrierung erfolgreich!\n";
+		std::cout << "Registrierung erfolgreich!\n";
 
 	}
 
 	void anmelden() {
+
+		std::string emailAnmeldung, passwortAnmeldung;
 
 		std::cout << "Bitte gib deine E-Mail ein: ";
 		std::cin >> emailAnmeldung;

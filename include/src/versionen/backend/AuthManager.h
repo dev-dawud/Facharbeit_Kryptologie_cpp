@@ -5,16 +5,13 @@
 #include <random>	
 #include <thread>
 #include <chrono>
-#include "picosha2.h"
+#include "../include/librarys/picosha2.h"
 #include <windows.h>
 
 class AuthManagerV6 {
 
 private:
 
-	int menueEingabe;
-	std::string nameEingabe, emailEingabe, passwortEingabe;
-	std::string emailAnmeldung, passwortAnmeldung;
 	std::string dEmail, dName, dPasswort, dSalt, dTel;
 	std::string salt, passwortSalt, code;
 
@@ -33,8 +30,10 @@ private:
 		for (size_t i = 0; i < eingabe.size(); ++i) {
 
 			volatile char* p = &eingabe[i];
+
 			*p = '\0';
 		}
+
 		eingabe.clear();
 
 	}
@@ -54,9 +53,11 @@ private:
 		}
 	}
 
-	void generiereSalt() {
+public:
 
-		salt = "";
+	void generiereSalt(std::string returnSalt) {
+
+		returnSalt = "";
 
 		std::random_device rd;
 		std::mt19937 generator(rd());
@@ -65,14 +66,16 @@ private:
 
 		for (int i = 0; i < 16; ++i) {
 
-			salt += zeichen[dist(generator)];
+			returnSalt += zeichen[dist(generator)];
 		}
 	}
 
-public:
-
 	void codeSenden(std::string tel) {
 
+<<<<<<< HEAD:include/AuthManager.h
+=======
+		***REMOVED***
+>>>>>>> 8165ed4 (hinzufügen einer hashgenerator Klasse und übersichtlichere main.cpp / anpassen der Odnerstrukur):include/src/versionen/backend/AuthManager.h
 		SYSTEMTIME st;
 		GetLocalTime(&st);
 
@@ -122,7 +125,7 @@ public:
 
 	bool bRegistrieren(std::string name, std::string email, std::string passwort, std::string tel) {
 
-		generiereSalt();
+		generiereSalt(salt);
 
 
 		passwort = passwort + pepper + salt;

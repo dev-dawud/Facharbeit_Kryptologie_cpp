@@ -3,9 +3,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "../../include/picosha2.h"
-#include "../../include/md5.h"
+#include "../include/librarys/picosha2.h"
+#include "../include/librarys/md5.h"
 #include "main_hack.h"
+#include <chrono>
 
 class BruteForce {
 public:

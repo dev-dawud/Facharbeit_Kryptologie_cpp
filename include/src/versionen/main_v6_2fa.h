@@ -2,22 +2,24 @@
 
 #include <iostream>
 #include <windows.h>
-#include "../../include/AuthManager.h"
+#include "backend/AuthManager.h"
 #include <stdlib.h>
 #include <filesystem>
 
 class MenueV6 {
-public:
+private: 
 
-	int menueEingabe;
 	AuthManagerV6 AuthManagerV6;
 
+public:
 
 	void menueAnzeige() {
 
+		int menueEingabe;
+
 		std::cout << "******************************************" << std::endl << std::endl;
 		std::cout << " Willkommen " << std::endl << std::endl;
-		std::cout << " 1. regristrieren\n"
+		std::cout << " 1. registrieren\n"
 				  << " 2. anmelden\n"
 				  << " 3. zurueck\n"
 				  << " 4. beenden\n\n\n";
@@ -30,7 +32,7 @@ public:
 		switch (menueEingabe) {
 
 		case 1:
-			regristrierung();
+			registrierung();
 		break;
 
 		case 2:
@@ -46,7 +48,7 @@ public:
 		break;
 
 		default:
-			std::cout << "Ungültige Eingabe, bitte mach es erneut." << std::endl;
+			std::cout << "Ungültige Eingabe, bitte versuche es erneut." << std::endl;
 		break;
 
 		}
@@ -54,12 +56,11 @@ public:
 	}
 
 
-	void regristrierung() {
+	void registrierung() {
 
 		std::string n, e, p, t;
 
 		std::cout << "******* REGISTRIERUNG *******" << std::endl << std::endl;
-
 
 
 		std::cout << "Bitte gib deinen Namen ein (nur Vorname!): ";
@@ -89,16 +90,14 @@ public:
 		std::cout << "Bitte erstelle ein Passwort: ";
 		std::cin >> p;
 
-
-
 		if (AuthManagerV6.bRegistrieren(n, e, p , t) == true) {
 
-			std::cout << "Regristrierung erfolgreich!\n";
+			std::cout << "Registrierung erfolgreich!\n";
 
 		}
 		else {
 
-			std::cout << "Regristrierung fehlgeschlagen!\n" 
+			std::cout << "Registrierung fehlgeschlagen!\n" 
 					  << "Bitte versuche es erneut\n";
 		}
 

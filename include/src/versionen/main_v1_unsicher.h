@@ -4,20 +4,19 @@
 #include <fstream>
 
 class MenueV1{
-	
-	public:
+private:
 
-		int menueEingabe;
-		std::string nameEingabe, emailEingabe, passwortEingabe;
-		std::string emailAnmeldung, passwortAnmeldung;	
-		std::string dEmail, dName , dPasswort;	
+	std::string dEmail, dName, dPasswort;
 
+public:
 
 		void menueAnzeige() {
 
+			int menueEingabe;
+
 			std::cout << "******************************************" << std::endl << std::endl;
 			std::cout << " Willkommen " << std::endl << std::endl;
-			std::cout << " 1. regristrieren\n"
+			std::cout << " 1. registrieren\n"
 					  << " 2. anmelden\n"
 					  << " 3. zurueck\n"
 					  << " 4. beenden\n\n\n";
@@ -28,7 +27,7 @@ class MenueV1{
 			switch (menueEingabe){
 
 				case 1:
-					regristrierung();
+					registrierung();
 				break;
 
 				case 2:
@@ -44,14 +43,16 @@ class MenueV1{
 				break;
 
 				default:
-					std::cout << "Ungueltige Eingabe bitte mach es erneut." << std::endl;
+					std::cout << "Ungueltige Eingabe bitte versuche es erneut." << std::endl;
 				break;
 
 			}
 
 		}
 
-		void regristrierung() {
+		void registrierung() {
+
+			std::string nameEingabe, emailEingabe, passwortEingabe;
 
 			std::cout << "Name: ";
 			std::cin >> nameEingabe;
@@ -72,11 +73,13 @@ class MenueV1{
 			registrierung << emailEingabe << "  " << passwortEingabe << "  " << nameEingabe << std::endl;
 			registrierung.close();
 			
-			std::cout << "Regristrierung erfolgreich!\n\n";
+			std::cout << "Registrierung erfolgreich!\n\n";
 
 		}
 		
 		void anmelden() {
+
+			std::string emailAnmeldung, passwortAnmeldung;
 
 			std::cout << "Bitte gib deine E-Mail ein: ";
 			std::cin >> emailAnmeldung;

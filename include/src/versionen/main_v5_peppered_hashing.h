@@ -1,29 +1,21 @@
 #include <iostream>
-#include "../../include/AuthManager-v5.h"
+#include "backend/AuthManager-v5.h"
 #include <string>
 
-// In v5 habe ich das Programm in einen Frontend und backend unterteilt. In AuthManager.h findet man den Backend bereich
+// In v5 ist das Programm in einen Frontend und Backend unterteilt. In AuthManager.h findet man den Backend Bereich
 // Im frontend breich wird das Menü in der konsole angezeigt und input und output verarbeitet
 
 
 class MenueV5 {
+private: 
+
+	AuthManagerV5 AuthManagerV5;
 
 public:
-	
-	// AuthManager.h ist mein Objekt, dass ich definiere um die Funktionen der Klasse AuthManager zu benutzen
-    AuthManagerV5 AuthManagerV5; 
 
-public:
-
-	int menueEingabe;
-	std::string nameEingabe, emailEingabe, passwortEingabe;	
-	std::string emailAnmeldung, passwortAnmeldung;	
-	std::string dEmail, dName, dPasswort, dSalt;
-	std::string salt, passwortSalt;	
-
-
-	
 	void menueAnzeige() {
+
+		int menueEingabe;
 
 		std::cout << "******************************************" << std::endl << std::endl;
 		std::cout << " Willkommen " << std::endl << std::endl;
@@ -40,7 +32,7 @@ public:
 		switch (menueEingabe) {
 
 		case 1:
-			regristrierung();
+			registrierung();
 		break;
 
 		case 2:
@@ -56,7 +48,7 @@ public:
 		break;
 		
 		default:
-			std::cout << "Ungültige Eingabe, bitte mach es erneut." << std::endl;
+			std::cout << "Ungültige Eingabe, bitte versuche es erneut." << std::endl;
 		break;
 
 		}
@@ -64,15 +56,13 @@ public:
 	}
 
 
-	void regristrierung() {
+	void registrierung() {
 
 		// n e p sind parameter für die Funktion bRegistrieren() in AuthManager.h
-		// n name e email p passwort
+		// n  name e email p passwort
 		std::string n, e, p;
 
 		std::cout << "******* REGISTRIERUNG *******" << std::endl << std::endl;
-
-
 
 		std::cout << "Bitte gib deinen Namen ein (nur Vorname!): ";
 
@@ -89,12 +79,12 @@ public:
 
 		if (AuthManagerV5.bRegistrieren(n, e, p) == true) {
 
-			std::cout << "Regristrierung erfolgreich!\n";
+			std::cout << "Registrierung erfolgreich!\n";
 
 		}
 		else{
 
-			std::cout << "Regristrierung fehlgeschlagen!\n";
+			std::cout << "Registrierung fehlgeschlagen!\n";
 		}
 
 
