@@ -8,6 +8,7 @@
 #include "../include/src/tools/tool.h"
 #include "../include/librarys/picosha2.h"
 #include "../include/src/hashGenerator.h"
+#include "../include/src/entropy.h"
 
 class Menue {
 private:
@@ -22,10 +23,9 @@ private:
 	Tool Tools;
 
 	hashGenerator hashGenerator;
+	Entropy entropy;
 
 public:
-
-	
 
 	void menueAnzeige() {
 
@@ -57,7 +57,7 @@ public:
 			break;
 			
 			case 4:
-				entropy();
+				entropy.entropy();
 			break;
 
 			case 5:
@@ -121,12 +121,6 @@ public:
 				std::cout << "Ungueltige Eingabe bitte versuche es erneut." << std::endl;
 			break;
 		}
-	}
-
-	
-
-	void entropy() {
-
 	}
 };
 
