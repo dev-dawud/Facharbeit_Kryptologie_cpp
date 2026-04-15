@@ -9,7 +9,7 @@
 // In dieser Klasse sind die Funktionen für die Regristrierung und Anmeldung des users
 class AuthManagerV5 {
 
-	
+
 private:
 
 	std::string dEmail, dName, dPasswort, dSalt;
@@ -29,7 +29,7 @@ private:
 	// ramLoeschen() ist privat weil man es nur intern in der klasse benutzen darf um sicher zu sein dass daten wie passwörter nicht im ram verbleiben
 	void ramLoeschen(std::string& eingabe) {
 
-	
+
 		for (size_t i = 0; i < eingabe.size(); ++i) {
 
 			volatile char* p = &eingabe[i];
@@ -37,11 +37,11 @@ private:
 			*p = '\0';
 
 		}
-		eingabe.clear(); 
+		eingabe.clear();
 
 	}
 
-	
+
 	void generiereSalt() {
 
 		// um Potenzierung zu vermeiden wird der salt immer auf leer definiert bevor ein neuer generiert wird
@@ -55,7 +55,7 @@ private:
 
 
 		for (int i = 0; i < 16; ++i) {
-			
+
 			salt += zeichen[dist(generator)];
 
 		}
@@ -82,7 +82,7 @@ public:
 		registrierung.close();
 
 
-		ramLoeschen(passwort); 
+		ramLoeschen(passwort);
 		ramLoeschen(salt);
 
 
@@ -91,7 +91,7 @@ public:
 
 	bool bAnmelden(std::string email, std::string passwort) {
 
-		
+
 		std::ifstream anmeldung("data/user/v5_users_dat.txt");
 
 

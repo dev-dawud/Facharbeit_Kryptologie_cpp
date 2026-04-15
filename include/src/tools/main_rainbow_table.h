@@ -4,7 +4,7 @@
 #include <fstream>
 
 class RainbowTable {
-public: 
+public:
 
 	void rainbowTable() {
 
@@ -25,4 +25,3 @@ public:
 
 	}
 };
-

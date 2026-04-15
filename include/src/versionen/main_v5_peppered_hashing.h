@@ -7,7 +7,7 @@
 
 
 class MenueV5 {
-private: 
+private:
 
 	AuthManagerV5 AuthManagerV5;
 
@@ -25,7 +25,7 @@ public:
 				  << " 4. beenden\n\n\n";
 		std::cout << "******************************************" << std::endl << std::endl;
 
-		
+
 		std::cin >> menueEingabe;
 
 
@@ -42,11 +42,11 @@ public:
 		case 3:
 			return;
 		break;
-		
+
 		case 4:
 			exit(0);
 		break;
-		
+
 		default:
 			std::cout << "Ungültige Eingabe, bitte versuche es erneut." << std::endl;
 		break;
@@ -82,7 +82,7 @@ public:
 			std::cout << "Registrierung erfolgreich!\n";
 
 		}
-		else{
+		else {
 
 			std::cout << "Registrierung fehlgeschlagen!\n";
 		}

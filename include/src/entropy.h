@@ -14,7 +14,7 @@ public:
 
 		std::cout << "Geben sie das Passwort ein was sie testen möchten: ";
 		std::cin >> entrEingabe;
-		
+
 		berechneEntropy(entrEingabe);
 	}
 
@@ -37,19 +37,19 @@ public:
 
 			std::cout << "Das Passwort ist sehr schwach." << std::endl;
 		}
-		else if(entropy < 49) {
+		else if (entropy < 49) {
 
 			std::cout << "Das Passwort ist schwach." << std::endl;
 		}
-		else if(entropy < 74) {
+		else if (entropy < 74) {
 
 			std::cout << "Das Passwort ist akzeptabel." << std::endl;
 		}
-		else if(entropy < 100) {
+		else if (entropy < 100) {
 
 			std::cout << "Das Passwort ist stark." << std::endl;
 		}
-		else if(entropy >= 100){
+		else if (entropy >= 100) {
 
 			std::cout << "Das Passwort ist sehr stark." << std::endl;
 		}

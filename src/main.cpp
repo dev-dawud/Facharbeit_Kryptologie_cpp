@@ -43,30 +43,30 @@ public:
 		std::cin >> menueEingabe;
 
 		switch (menueEingabe) {
-			
-			case 1:
-				versionen();
-			break;
-			
-			case 2:
-				Tools.tool();
-			break;
 
-			case 3:
-				hashGenerator.hashgenerator();
-			break;
-			
-			case 4:
-				entropy.entropy();
-			break;
+		case 1:
+			versionen();
+		break;
 
-			case 5:
-				exit(0);
-			break;
+		case 2:
+			Tools.tool();
+		break;
 
-			default:
-				std::cout << "Ungueltige Eingabe bitte versuche es erneut." << std::endl;
-			break;
+		case 3:
+			hashGenerator.hashgenerator();
+		break;
+
+		case 4:
+			entropy.entropy();
+		break;
+
+		case 5:
+			exit(0);
+		break;
+
+		default:
+			std::cout << "Ungueltige Eingabe bitte versuche es erneut." << std::endl;
+		break;
 		}
 	}
 
@@ -88,38 +88,38 @@ public:
 		std::cin >> versionEingabe;
 
 		switch (versionEingabe) {
-			
-			case 1:
-				menueV1.menueAnzeige();
-			break;
 
-			case 2:
-				menueV2.menueAnzeige();	
-			break;
+		case 1:
+			menueV1.menueAnzeige();
+		break;
 
-			case 3:
-				menueV3.menueAnzeige();
-			break;
+		case 2:
+			menueV2.menueAnzeige();
+		break;
 
-			case 4:
-				menueV4.menueAnzeige();
-			break;
+		case 3:
+			menueV3.menueAnzeige();
+		break;
 
-			case 5:
-				menueV5.menueAnzeige();
-			break;
+		case 4:
+			menueV4.menueAnzeige();
+		break;
 
-			case 6:
-				menueV6.menueAnzeige();
-			break;
-			
-			case 7:
-				return;
-			break;
+		case 5:
+			menueV5.menueAnzeige();
+		break;
 
-			default:
-				std::cout << "Ungueltige Eingabe bitte versuche es erneut." << std::endl;
-			break;
+		case 6:
+			menueV6.menueAnzeige();
+		break;
+
+		case 7:
+			return;
+		break;
+
+		default:
+			std::cout << "Ungueltige Eingabe bitte versuche es erneut." << std::endl;
+		break;
 		}
 	}
 };

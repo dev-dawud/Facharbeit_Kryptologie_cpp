@@ -10,9 +10,9 @@ std::string salt;
 
 class hashGenerator {
 private:
-	
+
 	std::string pEingabe, md5Hash, passwort;
-	
+
 	char saltEingabe;
 	MD5 md5;
 	AuthManagerV6 authManagerV6;
@@ -26,8 +26,8 @@ public:
 		std::cout << "******************************************" << std::endl << std::endl;
 		std::cout << " Hash Generator " << std::endl << std::endl;
 		std::cout << "1. MD5\n"
-			   	  << "2. SHA256\n"
-				  << "3. zurueck\n\n";
+			<< "2. SHA256\n"
+			<< "3. zurueck\n\n";
 		std::cout << "******************************************" << std::endl << std::endl;
 
 		std::cin >> hashgenEingabe;
@@ -35,15 +35,15 @@ public:
 		switch (hashgenEingabe) {
 		case 1:
 			hashgeneratorMD5();
-		break;
+			break;
 
 		case 2:
 			hashgeneratorSHA256();
-		break;
+			break;
 
 		default:
 			std::cout << "Ungueltige Eingabe bitte versuche es erneut.";
-		break;
+			break;
 		}
 
 	}

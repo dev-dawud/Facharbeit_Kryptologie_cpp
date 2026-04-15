@@ -7,7 +7,7 @@
 #include "../include/librarys/md5.h"
 
 class mainTool {
-public: 
+public:
 
     std::string hash;
     std::string Zeile;
@@ -39,7 +39,7 @@ public:
 
             std::fstream tabelle("data/list/rockyou.txt");
 
-			auto start = std::chrono::high_resolution_clock::now();
+            auto start = std::chrono::high_resolution_clock::now();
 
             while (std::getline(tabelle, Zeile)) {
 
@@ -49,7 +49,7 @@ public:
 
                     gefunden = true;
 
-					auto end = std::chrono::high_resolution_clock::now();
+                    auto end = std::chrono::high_resolution_clock::now();
                     std::chrono::duration<double> laenge = end - start;
 
                     std::cout << "Es hat " << laenge.count() << " Sekunden gedauert\n";
@@ -97,7 +97,7 @@ public:
 
                     std::cout << "\nMöchtest du BruteForce starten?\n";
 
-					std::cin >> eingabe;
+                    std::cin >> eingabe;
 
                     if (eingabe == 'J' || eingabe == 'j') {
 
@@ -172,20 +172,20 @@ public:
 
                     std::cout << "\nPasswort nicht gefunden\n" << std::endl;
 
-					char eingabe2;
+                    char eingabe2;
 
                     std::cout << "\nMöchtest du BruteForce starten?\n";
 
-					std::cin >> eingabe2;
+                    std::cin >> eingabe2;
 
-                        if (eingabe2 == 'J' || eingabe2 == 'j') {
+                    if (eingabe2 == 'J' || eingabe2 == 'j') {
 
-                            std::cout << "Brute Force wird gestartet... \n" << std::endl;
-                            bruteForce(zielHash, typ);
-                        }
-                        else {
-                            return;
-                        }                   
+                        std::cout << "Brute Force wird gestartet... \n" << std::endl;
+                        bruteForce(zielHash, typ);
+                    }
+                    else {
+                        return;
+                    }
                 }
 
             }
@@ -198,7 +198,7 @@ public:
     }
 
     // dieser BruteForce code ist nicht optimiert und effozient, er dient einfach nur umd die funktionalität zu zeigen
-   
+
     void bruteForce(/*std::string alphabet,*/std::string zielHash, int typ) {
 
         std::string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
@@ -430,16 +430,15 @@ public:
         std::string teil3 = "0123456789";
         std::string teil4 = "!@#$ % ^&*";
 
-		std::thread Thread1(bruteForce, teil1, zielHash, typ);
-		std::thread Thread2(bruteForce, teil2, zielHash, typ);
-		std::thread Thread3(bruteForce, teil3, zielHash, typ);
-		std::thread Thread4(bruteForce, teil4, zielHash, typ);
+        std::thread Thread1(bruteForce, teil1, zielHash, typ);
+        std::thread Thread2(bruteForce, teil2, zielHash, typ);
+        std::thread Thread3(bruteForce, teil3, zielHash, typ);
+        std::thread Thread4(bruteForce, teil4, zielHash, typ);
 
-		Thread1.join();
-		Thread2.join();
-		Thread3.join();
-		Thread4.join();
+        Thread1.join();
+        Thread2.join();
+        Thread3.join();
+        Thread4.join();
     }
     */
 };
-

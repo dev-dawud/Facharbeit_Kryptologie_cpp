@@ -9,19 +9,19 @@
 #include "main_rainbow_table.h"
 
 class Tool {
-public: 
+public:
 
-	void tool(){
-		
+	void tool() {
+
 		int toolEingabe;
 
 		std::cout << "******************************************" << std::endl << std::endl;
 		std::cout << " Willkommen bei den tools\n\n";
 		std::cout << "1. Datei auslesen\n"
-				  << "2. Rainbow Table\n"
-				  << "3. Brute Force\n"
-				  << "4. automatisch\n"
-				  << "5. beenden\n\n";
+			<< "2. Rainbow Table\n"
+			<< "3. Brute Force\n"
+			<< "4. automatisch\n"
+			<< "5. beenden\n\n";
 		std::cout << "******************************************" << std::endl << std::endl;
 
 		std::cin >> toolEingabe;
@@ -30,31 +30,31 @@ public:
 
 		case 1:
 			dateiAuslesen();
-		break;
+			break;
 
 		case 2:
 			rainbowTable();
-		break;
+			break;
 
 		case 3:
 			bruteForce();
-		break;
+			break;
 
 		case 4:
 			automatisch();
-		break;
-		
+			break;
+
 		case 5:
 			exit(0);
-		break;
+			break;
 
 		default:
 			std::cout << "Ungueltige Eingabe, bitte mach es erneut" << std::endl;
-		break;
+			break;
 
 
 		}
-	
+
 	}
 
 	void dateiAuslesen() {
@@ -66,8 +66,8 @@ public:
 
 		std::cin >> dateiEingabe;
 
-		switch (dateiEingabe){
-			
+		switch (dateiEingabe) {
+
 		case 1: {
 			std::ifstream datei("data/user/v1_users_dat.txt");
 
@@ -77,7 +77,7 @@ public:
 			}
 			datei.close();
 		}
-		break;
+			  break;
 
 		case 2: {
 			std::ifstream datei("data/user/v2_users_dat.txt");
@@ -88,9 +88,9 @@ public:
 			}
 			datei.close();
 		}
-		break;
+			  break;
 
-		case 3:{
+		case 3: {
 			std::ifstream datei("data/user/v3_users_dat.txt");
 
 			while (std::getline(datei, zeile)) {
@@ -99,9 +99,9 @@ public:
 			}
 			datei.close();
 		}
-		break;
+			  break;
 
-		case 4:{
+		case 4: {
 			std::ifstream datei("data/user/v4_users_dat.txt");
 
 
@@ -111,9 +111,9 @@ public:
 			}
 			datei.close();
 		}
-		break;
+			  break;
 
-		case 5:{
+		case 5: {
 			std::ifstream datei("data/user/v5_users_dat.txt");
 
 			while (std::getline(datei, zeile)) {
@@ -122,9 +122,9 @@ public:
 			}
 			datei.close();
 		}
-		break;
+			  break;
 
-		case 6:{
+		case 6: {
 			std::ifstream datei("data/user/v6_users_dat.txt");
 
 			while (std::getline(datei, zeile)) {
@@ -133,15 +133,15 @@ public:
 			}
 			datei.close();
 		}
-		break;
+			  break;
 
 		default:
 			std::cout << "Ungueltige Eingabe, bitte mach es erneut" << std::endl;
-		break;
+			break;
 		}
-    }
+	}
 	void rainbowTable() {
-		
+
 		mainTool maintool;
 
 		maintool.rainbowTable();
@@ -152,7 +152,7 @@ public:
 		BruteForce bruteForce;
 
 		bruteForce.erkenneHash();
-	}	
+	}
 
 	void automatisch() {
 		mainTool maintool;
@@ -160,4 +160,4 @@ public:
 		maintool.rainbowTable();
 		maintool.bruteForce(maintool.zielHash, maintool.typ);
 	}
-};	
+};

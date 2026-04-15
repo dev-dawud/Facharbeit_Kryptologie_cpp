@@ -21,7 +21,7 @@ private:
 		"abcdefghijklmnopqrstuvwxyz"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		"0123456789"
-		"!@#$%^&*";
+		"!@#$%^&*"; 
 
 	const std::string pepper = "d3r_p3pp3r_ist_imm3r_3in_f3st3r_w3rt_und_wird_imm3r_irg3ndwo_im_cod3_od3r_3xt3rn3_f3stplatt3_v3rst3ckt";
 

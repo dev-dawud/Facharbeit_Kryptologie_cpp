@@ -7,7 +7,7 @@
 #include <filesystem>
 
 class MenueV6 {
-private: 
+private:
 
 	AuthManagerV6 AuthManagerV6;
 
@@ -42,7 +42,7 @@ public:
 		case 3:
 			return;
 		break;
-		
+
 		case 4:
 			exit(0);
 		break;
@@ -90,15 +90,15 @@ public:
 		std::cout << "Bitte erstelle ein Passwort: ";
 		std::cin >> p;
 
-		if (AuthManagerV6.bRegistrieren(n, e, p , t) == true) {
+		if (AuthManagerV6.bRegistrieren(n, e, p, t) == true) {
 
 			std::cout << "Registrierung erfolgreich!\n";
 
 		}
 		else {
 
-			std::cout << "Registrierung fehlgeschlagen!\n" 
-					  << "Bitte versuche es erneut\n";
+			std::cout << "Registrierung fehlgeschlagen!\n"
+				<< "Bitte versuche es erneut\n";
 		}
 
 	}

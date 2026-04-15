@@ -36,7 +36,7 @@ public:
 		case 2:
 			anmelden();
 		break;
-		
+
 		case 3:
 			return;
 		break;
@@ -70,10 +70,10 @@ public:
 
 
 		// Variable fürs Speichern des gehashten Passwort
-		std::string hash_hex_passwort; 
+		std::string hash_hex_passwort;
 
 		// Hashen des Passworts und Speichern im string hash_hex_passwort
-		picosha2::hash256_hex_string(passwortEingabe, hash_hex_passwort); 
+		picosha2::hash256_hex_string(passwortEingabe, hash_hex_passwort);
 
 
 		std::ofstream registrierung("data/user/v3_users_dat.txt", std::ios::app);

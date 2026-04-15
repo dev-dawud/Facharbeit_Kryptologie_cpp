@@ -40,11 +40,11 @@ public:
 		case 2:
 			anmelden();
 		break;
-		
+
 		case 3:
 			return;
 		break;
-		
+
 		case 4:
 			exit(0);
 		break;
@@ -86,14 +86,14 @@ public:
 		for (int i = 0; i < 16; ++i) {
 
 			salt += zeichen[dist(generator)];
-		
+
 		}
 
-		passwortEingabe += salt; 
+		passwortEingabe += salt;
 
 		std::string hash_hex_passwort;
 
-		picosha2::hash256_hex_string(passwortEingabe, hash_hex_passwort); 
+		picosha2::hash256_hex_string(passwortEingabe, hash_hex_passwort);
 
 
 		std::ofstream registrierung("data/user/v4_users_dat.txt", std::ios::app);
@@ -141,7 +141,7 @@ public:
 				ramLoeschen(dName);
 
 				if (dPasswort == passwortAnmeldung) {
-					
+
 					std::cout << "Anmeldung erfolgreich! Willkommen zurueck " << dName << std::endl;
 
 					gefunden = true;
@@ -164,7 +164,7 @@ public:
 	}
 
 	// Funktion überschreibt Daten im RAM mit 0000 damit sie nicht mehr lesbar sind
-	void ramLoeschen(std::string &eingabe) {
+	void ramLoeschen(std::string& eingabe) {
 
 		for (size_t i = 0; i < eingabe.size(); ++i) {
 
