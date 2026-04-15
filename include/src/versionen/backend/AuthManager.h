@@ -72,10 +72,7 @@ public:
 
 	void codeSenden(std::string tel) {
 
-<<<<<<< HEAD:include/AuthManager.h
-=======
-		***REMOVED***
->>>>>>> 8165ed4 (hinzufügen einer hashgenerator Klasse und übersichtlichere main.cpp / anpassen der Odnerstrukur):include/src/versionen/backend/AuthManager.h
+
 		SYSTEMTIME st;
 		GetLocalTime(&st);
 
