@@ -199,224 +199,59 @@ public:
 
     // dieser BruteForce code ist nicht optimiert und effozient, er dient einfach nur umd die funktionalität zu zeigen
 
-    void bruteForce(/*std::string alphabet,*/std::string zielHash, int typ) {
 
-        std::string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-
-        std::string passwordVersuch;
+    // funktion ruft sich selbst immer wieder auf um alle möglichen Kombinationen zu generieren
+	// aktuell ist die bisher generierte Kombination
+    bool rekursivBruteForce(std::string aktuell, int length, const std::string alphabet, const std::string zielHash, int typ) {
+        
         std::string versuchHash;
 
-        std::cout << "... \n";
-
-        // 1. Kombination von 1 Zeichen
-        // : bedeutet dass a jedes zeichen aus dem alphabet annimmt
-        for (char a : alphabet) {
-
-            passwordVersuch = a;
+        if (aktuell.length() == length) {
 
             if (typ == 32) {
 
-                versuchHash = md5(passwordVersuch);
+                versuchHash = md5(aktuell);
             }
+
             else {
 
-                picosha2::hash256_hex_string(passwordVersuch, versuchHash);
+                picosha2::hash256_hex_string(aktuell, versuchHash);
             }
 
             if (versuchHash == zielHash) {
 
-                std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
-                return;
+                std::cout << "Brute Force erfolgreich\n" << "Passwort:" << aktuell << std::endl;
 
+                return true;
             }
+
+            return false;
         }
 
         for (char a : alphabet) {
 
-            for (char b : alphabet) {
+			// ruft sich selbst auf um zu überpüfen ob die aktuelle Kombination das Passwort ist, wenn nicht wird die nächste Kombination generiert
+            if (rekursivBruteForce(aktuell + a, length, alphabet, zielHash, typ)) {
 
-                passwordVersuch = std::string(1, a) + b;
-
-                if (typ == 32) {
-
-                    versuchHash = md5(passwordVersuch);
-                }
-                else {
-
-                    picosha2::hash256_hex_string(passwordVersuch, versuchHash);
-                }
-
-                if (versuchHash == zielHash) {
-
-                    std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
-                    return;
-
-                }
+                return true;
             }
         }
 
-        for (char a : alphabet) {
+        return false;
+    }
 
-            for (char b : alphabet) {
+    void bruteForce(std::string zielHash, int typ) {
 
-                for (char c : alphabet) {
+        std::string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+        int maxPasswortLaenge = 12;
 
-                    passwordVersuch = std::string(1, a) + b + c;
+        std::cout << "Brute Force gestartet... \n";
 
-                    if (typ == 32) {
+        for (int i = 1; i <= maxPasswortLaenge; ++i) {
 
-                        versuchHash = md5(passwordVersuch);
-                    }
-                    else {
+            if (rekursivBruteForce("", i, alphabet, zielHash, typ)) {
 
-                        picosha2::hash256_hex_string(passwordVersuch, versuchHash);
-                    }
-
-                    if (versuchHash == zielHash) {
-
-                        std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
-                        return;
-
-                    }
-                }
-            }
-        }
-
-        for (char a : alphabet) {
-
-            for (char b : alphabet) {
-
-                for (char c : alphabet) {
-
-                    for (char d : alphabet) {
-
-                        passwordVersuch = std::string(1, a) + b + c + d;
-
-                        if (typ == 32) {
-
-                            versuchHash = md5(passwordVersuch);
-                        }
-                        else {
-
-                            picosha2::hash256_hex_string(passwordVersuch, versuchHash);
-                        }
-
-                        if (versuchHash == zielHash) {
-
-                            std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
-                            return;
-
-                        }
-                    }
-                }
-            }
-        }
-
-        for (char a : alphabet) {
-
-            for (char b : alphabet) {
-
-                for (char c : alphabet) {
-
-                    for (char d : alphabet) {
-
-                        for (char e : alphabet) {
-
-                            passwordVersuch = std::string(1, a) + b + c + d + e;
-
-                            if (typ == 32) {
-
-                                versuchHash = md5(passwordVersuch);
-                            }
-                            else {
-
-                                picosha2::hash256_hex_string(passwordVersuch, versuchHash);
-                            }
-
-                            if (versuchHash == zielHash) {
-
-                                std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
-                                return;
-
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        for (char a : alphabet) {
-
-            for (char b : alphabet) {
-
-                for (char c : alphabet) {
-
-                    for (char d : alphabet) {
-
-                        for (char e : alphabet) {
-
-                            for (char f : alphabet) {
-
-                                passwordVersuch = std::string(1, a) + b + c + d + e + f;
-
-                                if (typ == 32) {
-
-                                    versuchHash = md5(passwordVersuch);
-                                }
-                                else {
-
-                                    picosha2::hash256_hex_string(passwordVersuch, versuchHash);
-                                }
-
-                                if (versuchHash == zielHash) {
-
-                                    std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
-                                    return;
-
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        for (char a : alphabet) {
-
-            for (char b : alphabet) {
-
-                for (char c : alphabet) {
-
-                    for (char d : alphabet) {
-
-                        for (char e : alphabet) {
-
-                            for (char f : alphabet) {
-
-                                for (char g : alphabet) {
-
-                                    passwordVersuch = std::string(1, a) + b + c + d + e + f + g;
-
-                                    if (typ == 32) {
-
-                                        versuchHash = md5(passwordVersuch);
-                                    }
-                                    else {
-
-                                        picosha2::hash256_hex_string(passwordVersuch, versuchHash);
-                                    }
-
-                                    if (versuchHash == zielHash) {
-
-                                        std::cout << "Brute Force erfolgreich\n" << "Passwort:" << passwordVersuch << std::endl;
-                                        return;
-
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                break;
             }
         }
     }
