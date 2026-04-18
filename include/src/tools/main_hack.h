@@ -80,7 +80,7 @@ public:
 
                 std::string url = "https://md5decrypt.net/en/Api/api.php?hash=" + hash + "&hash_type=md5&email=" + email + "&code=" + code;
 
-
+                // c_str wird genutzt um den string in ein char umzuwandeln damit system den versteht
                 std::system(("start \"\" \"" + url + "\"").c_str());
 
 
