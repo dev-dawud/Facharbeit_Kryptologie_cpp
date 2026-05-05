@@ -26,8 +26,8 @@ public:
 		std::cout << "******************************************" << std::endl << std::endl;
 		std::cout << " Hash Generator " << std::endl << std::endl;
 		std::cout << "1. MD5\n"
-			<< "2. SHA256\n"
-			<< "3. zurueck\n\n";
+			  	  << "2. SHA256\n"
+				  << "3. zurueck\n\n";
 		std::cout << "******************************************" << std::endl << std::endl;
 
 		std::cin >> hashgenEingabe;
@@ -35,15 +35,15 @@ public:
 		switch (hashgenEingabe) {
 		case 1:
 			hashgeneratorMD5();
-			break;
+		break;
 
 		case 2:
 			hashgeneratorSHA256();
-			break;
+		break;
 
 		default:
 			std::cout << "Ungueltige Eingabe bitte versuche es erneut.";
-			break;
+		break;
 		}
 
 	}
@@ -68,6 +68,7 @@ public:
 			md5Hash = md5(passwort);
 
 			std::cout << "Hash: " << md5Hash << std::endl;
+			std::cout << "Salt: " << salt << std::endl;
 
 		}
 		else if (saltEingabe == 'N' || saltEingabe == 'n') {
@@ -105,6 +106,7 @@ public:
 			picosha2::hash256_hex_string(passwort, sha256Hash);
 
 			std::cout << "Hash: " << sha256Hash << std::endl;
+			std::cout << "Salt: " << salt << std::endl;
 
 		}
 		else if (saltEingabe == 'N' || saltEingabe == 'n') {

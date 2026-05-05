@@ -55,7 +55,7 @@ private:
 
 public:
 
-	void generiereSalt(std::string returnSalt) {
+	void generiereSalt(std::string& returnSalt) {
 
 		returnSalt = "";
 

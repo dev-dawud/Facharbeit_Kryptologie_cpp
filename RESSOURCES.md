@@ -3,7 +3,6 @@
 Folgende Ressourcen wurden für die Erstellung dieses Projekts verwendet:
 
 ## Videoquellen
-
 - [fstream](https://youtu.be/Cz4fl-TUjVk?si=Emt8r1jUwXXFDVkE)
 - [MD5 algorithmus](https://youtu.be/5MiMK45gkTY?si=0dJcls9rk0toFVl1)
 - [SHA-256 algorithmus](https://youtu.be/Qc66OJx28no?si=8Qj971Eebjd0XPz8)

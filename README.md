@@ -1,11 +1,21 @@
 # Facharbeit_Kryptologie_cpp
 
-> **Funktionsweise und Unterschiede der Hashingalgorithmen SHA-256 und MD5**
+> **Sind die Hashing Algorithmen MD5 und SHA-256 ihrem Alter gerecht ?**
 
-Facharbeit_Kryptologie_cpp ist ein Programm für eine Facharbeit. Das Programm behandelt das thema, wie sich die sicherheitsstandards bei der Passwortspeicherung die Jahre ebtwickelt hat.
-Zusätlich gibt es tools um sich diese Sicherheitsstandards zu umgehen mithilfe von Brute Force, Rainbow-tables. Auch kann man Hashes generieren und die Entropie eines Passworts messen. 
+Facharbeit_Kryptologie_cpp ist ein in C++ geschriebenes Programm, das im Rahmen meiner Facharbeit entwickelt wurde.
+Es veranschaulicht, wie sich die Sicherheitsstandards bei der Passwortspeicherung über die Jahre entwickelt haben. 
+Das Projekt enthält ein iterativ aufgebautes Authentifizierungssystem sowie verschiedene forensische Tools (Brute-Force, Rainbow-Tables), um diese Sicherheitsstandards einem praktischen Stresstest zu zeigen.
+
+
+![menü Vorschau](data/img/menu_preview.png)
+![tools Vorschau](data/img/tools_preview.png)
 
 ---
+
+## Voraussetzungen
+- Compiler version muss mind. die version **C++ 17** (oder neuer) sein
+- Das Projekt nutzt die `<windows.h>` Header Datei und ist somit nur für Windows optimiert. 
+Für Linux/MacOS müssen Bibliotheken wie `<chrono>` oder `<ctime>` als Ersatz implementiert und der Code leicht angepasst werden.
 
 ## Installation
 
@@ -20,13 +30,12 @@ WICHTIG: die datei muss in den Ordner ``data/list`` liegen bzw. verschoben werde
 1. ```bash
    cd Facharbeit_Kryptologie_cpp/data/list
    ```
-Bevor man das Projekt ausführt wäre es am besten, den Compiler vom **Debug** -modus in den **Release (x64)** -modus zu wechseln, um die optimalste Performance zu erhalten.
 
-### WICHTIG
-- Compiler version muss mind. die version **C++ 17** haben
-- es kann vorkommen, dass sich der Windows defender oder ein anderes Antiviren Programm meldet und das Projekt als "gefahr" kennzeichnet und somit den download verhindert. Darum das Projekt zu beginn Whitelisten.
-- Das Projekt funktioniert nur auf Windows, da es die ``<windows.h`` header datei nutzt (kann aber auch auf Linux und MacOS laufen wenn man die ersatz header nutzt)
-- ersatz für ``<windows.h>`` wären librarys wie ``<chrono>`` oder ``<ctime>`` (Code müsste an den dementsprechenden teilen angepasst werden)
+### Compilereinstellungen & Sicherheitshinweise
+1. Bevor das Programm ausgeführt wird, wäre es ratsam in der IDE unbedingt vom **Debug**-Modus in den **Release (x64)**-Modus zu wechseln. 
+Nur so erhältt man die volle Performance, die besonders für die Brute-Force Algorithmen entscheidend ist.
+2. Da das Programm auffällige Algorithmen wie Brute-Force simuliert, kann es vorkommen, dass der Windows Defender oder andere Antivirenprogramme fälschlicherweise anschlagen.
+Es wird empfohlen, den Projektordner vor dem Kompilieren auf die Whitelist zu setzen.
 
 ## Nutzung
 Im folgenden wird ein Beispiel Programm ausgeführt: 
@@ -38,7 +47,7 @@ Im folgenden wird ein Beispiel Programm ausgeführt:
    
 ---
 
-# Zusammenfassung einzelner Dateien:
+# Projektumfang & Features
 
 ## Versionen des Login-Systems
 
@@ -83,7 +92,7 @@ Im folgenden wird ein Beispiel Programm ausgeführt:
 
 ---
 
-## Hacker-Tools
+## Forensische Tools (Hacker-Tools)
 
 Die Tools zeigen verschiedene Angriffsmethoden und zeigen, wie unsicher die früheren Versionen sind.
 
@@ -115,14 +124,16 @@ Die Tools zeigen verschiedene Angriffsmethoden und zeigen, wie unsicher die frü
 
 ---
 
-## Hash Generator
+## Zusätzliche Module
+
+### Hash Generator
 [hashGenerator.h](include/src/hashGenerator.h)
 
 - erzeugt MD5- oder SHA-256 Hashes
 - Optional mit Salt für erhöhte Sicherheit
 - Generierte Hashes können direkt mit den Hacker Tools getestet werden
 
-## Passwortstärke tester (Entropie)
+### Passwortstärke tester (Entropie)
 [entropy.h](include/src/entropy.h)
 
 - Berechnet die Passwortstärke mit der Shannon-Entropie: `H = n × log₂(s)`
@@ -139,11 +150,17 @@ Tabelle der möglichen Ergebnisse:
 
 ---
 
+## Contributing
+Dies ist ein Schulprojekt für meine Facharbeit, daher ist das Projekt grundsätzlich abgeschlossen. 
+Konstruktives Feedback oder Vorschläge zur Codeoptimierung sind dennoch jederzeit willkommen.
+Eröffne dafür einfach ein Issue oder erstelle einen Pull Request.
+
 ## Verwendete Bibliotheken
 
 - [picosha2](https://github.com/okdshin/PicoSHA2) – Header only SHA-256 Implementierung
 - [md5.h/md5.cpp](http://www.zedwood.com/article/cpp-md5-function) – Header only MD5 Implementierung
 - [rockyou.txt](https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt) – Passwortliste
+- weitere Quellen die für das Projekt verwendet wurden, finden Sie in der Datei [RESSOURCES.md](RESSOURCES.md)
 
 ---
 

@@ -243,7 +243,7 @@ public:
     void bruteForce(std::string zielHash, int typ) {
 
         std::string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-        int maxPasswortLaenge = 12;
+        int maxPasswortLaenge = 30;
 
         std::cout << "Brute Force gestartet... \n";
 
