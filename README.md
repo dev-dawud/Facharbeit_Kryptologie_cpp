@@ -8,7 +8,6 @@ Das Projekt enthält ein iterativ aufgebautes Authentifizierungssystem sowie ver
 
 
 ![menü Vorschau](data/img/menu_preview.png)
-![tools Vorschau](data/img/tools_preview.png)
 
 ---
 
@@ -50,6 +49,8 @@ Im folgenden wird ein Beispiel Programm ausgeführt:
 # Projektumfang & Features
 
 ## Versionen des Login-Systems
+
+![versionen Vorschau](data/img/versions_preview.png)
 
 ### Version 1 – Klartext (unsicher)
 [main_v1_unsicher.h](include/src/versionen/main_v1_unsicher.h)
@@ -96,6 +97,8 @@ Im folgenden wird ein Beispiel Programm ausgeführt:
 
 Die Tools zeigen verschiedene Angriffsmethoden und zeigen, wie unsicher die früheren Versionen sind.
 
+![tools Vorschau](data/img/tools_preview.png)
+
 ### Datei auslesen
 - liest die gespeicherten Nutzerdaten jeder Version aus
 - zeigt den Unterschied zwischen Klartext und Hash
@@ -127,6 +130,9 @@ Die Tools zeigen verschiedene Angriffsmethoden und zeigen, wie unsicher die frü
 ## Zusätzliche Module
 
 ### Hash Generator
+
+![hashgen Preview](data/img/hashgen_preview.png) 
+
 [hashGenerator.h](include/src/hashGenerator.h)
 
 - erzeugt MD5- oder SHA-256 Hashes
