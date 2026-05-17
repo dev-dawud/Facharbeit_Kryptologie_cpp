@@ -21,7 +21,7 @@ public:
 		std::cout << " Willkommen " << std::endl << std::endl;
 		std::cout << " 1. registrieren\n"
 				  << " 2. anmelden\n"
-				  << " 3. anmelden\n"
+				  << " 3. zurueck\n"
 				  << " 4. beenden\n\n\n";
 		std::cout << "******************************************" << std::endl << std::endl;
 
@@ -46,6 +46,7 @@ public:
 		break;
 
 		default:
+
 			std::cout << "Ungueltige Eingabe, bitte versuche es erneut" << std::endl;
 		break;
 
@@ -108,7 +109,7 @@ public:
 
 				if (dPasswort == passwortAnmeldung) {
 
-					std::cout << "Anmeldung erfolgreich! Willkommen zurueck " << dName << std::endl;
+					std::cout << "Anmeldung erfolgreich! Willkommen zurueck :) " << dName << std::endl;
 
 					gefunden = true;
 

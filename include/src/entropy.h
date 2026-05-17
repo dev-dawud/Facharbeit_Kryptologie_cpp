@@ -21,7 +21,6 @@ public:
 	void berechneEntropy(std::string entropyEingabe) {
 
 		// vereinfachte Formel von Shannon: H = n * log2(s)
-		// entropy ist das resultierende Maß der Stärke vom Passwort in bits
 		// s ist die Anzahl der möglichen Zeichen die im Passwort auftreten können
 		// n ist die Länge des Passworts
 		// genauere Erklärung dazu in 2.1 "Grundlagen der Passwortsicherheit" der Facharbeit

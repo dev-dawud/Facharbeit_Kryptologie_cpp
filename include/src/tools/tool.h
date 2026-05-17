@@ -18,10 +18,10 @@ public:
 		std::cout << "******************************************" << std::endl << std::endl;
 		std::cout << " Willkommen bei den tools\n\n";
 		std::cout << "1. Datei auslesen\n"
-			<< "2. Rainbow Table\n"
-			<< "3. Brute Force\n"
-			<< "4. automatisch\n"
-			<< "5. beenden\n\n";
+				  << "2. Rainbow Table\n"
+				  << "3. Brute Force\n"
+				  << "4. automatisch\n"
+				  << "5. beenden\n\n";
 		std::cout << "******************************************" << std::endl << std::endl;
 
 		std::cin >> toolEingabe;
@@ -49,7 +49,7 @@ public:
 			break;
 
 		default:
-			std::cout << "Ungueltige Eingabe, bitte mach es erneut" << std::endl;
+			std::cout << "Ungueltige Eingabe, bitte versuche es erneut" << std::endl;
 			break;
 
 
@@ -136,7 +136,7 @@ public:
 			  break;
 
 		default:
-			std::cout << "Ungueltige Eingabe, bitte mach es erneut" << std::endl;
+			std::cout << "Ungueltige Eingabe, bitte versuche es erneut" << std::endl;
 			break;
 		}
 	}
@@ -161,3 +161,5 @@ public:
 		maintool.bruteForce(maintool.zielHash, maintool.typ);
 	}
 };
+
+

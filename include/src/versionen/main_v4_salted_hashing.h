@@ -73,7 +73,7 @@ public:
 		std::cout << "Passwort: ";
 		std::cin >> passwortEingabe;
 
-		// <random> bibliothek um eine zufallskette zu generieren Quelle (für die Nutzung): https://learn.microsoft.com/en-us/cpp/standard-library/random?view=msvc-170 
+		// <random> bibliothek um eine zufallskette zu generieren Quelle für die Nutzung: https://learn.microsoft.com/en-us/cpp/standard-library/random?view=msvc-170 
 		// rd wird definiert um eine Zufallszahl zu generieren die als Seed für den Generator dient
 		std::random_device rd;
 
@@ -163,9 +163,11 @@ public:
 		}
 	}
 
-	// Funktion überschreibt Daten im RAM mit 0000 damit sie nicht mehr lesbar sind
+	// Funktion überschreibt Daten im RAM mit 0000 damit sie nicht mehr lesbar sind (Secure Memory zeroing)
+	// eingabe ist eine Referenz auf die Variable die gelöscht wird
 	void ramLoeschen(std::string& eingabe) {
 
+		// Alle Zeichen der Eingabe werden mit '\0' überschrieben damit sie nicht mehr lesbar sind
 		for (size_t i = 0; i < eingabe.size(); ++i) {
 
 			// "volatile" ist dafür da dass der compiler die Anweisung befolgt und nicht überspringt

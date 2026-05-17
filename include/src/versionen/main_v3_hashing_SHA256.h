@@ -96,7 +96,7 @@ public:
 		std::cin >> passwortAnmeldung;
 
 
-		// Hashen des eingegebenen Passworts für die Anmeldung um es zu veergleichen
+		// Hashen des eingegebenen Passworts für die Anmeldung um es zu vergleichen
 		picosha2::hash256_hex_string(passwortAnmeldung, passwortAnmeldung);
 
 		std::ifstream anmeldung("data/user/v3_users_dat.txt");
@@ -111,7 +111,7 @@ public:
 
 				if (dPasswort == passwortAnmeldung) {
 
-					std::cout << "Anmeldung erfolgreich! Willkommen zurueck " << dName << std::endl;
+					std::cout << "Anmeldung erfolgreich! Willkommen zurueck :) " << dName << std::endl;
 
 					gefunden = true;
 				}

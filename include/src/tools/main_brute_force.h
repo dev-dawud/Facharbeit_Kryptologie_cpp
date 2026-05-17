@@ -44,12 +44,17 @@ public:
             return;
         }
 
+        // Für die Testergebnisse in der Facharbeit wurde die Zeit gemessen
+		// Startzeitpunkt festhalten
         auto start = std::chrono::high_resolution_clock::now();
 
+		// Funktion die gemessen wird
         maintool.bruteForce(hashPassword, typ);
 
+		// Endzeitpunkt festhalten
         auto end = std::chrono::high_resolution_clock::now();
 
+		// Dauer berechnen in Sekunden
         std::chrono::duration<double> laenge = end - start;
 
         std::cout << "Es hat " << laenge.count() << " Sekunden gedauert\n";

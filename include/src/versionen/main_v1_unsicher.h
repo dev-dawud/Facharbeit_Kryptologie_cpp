@@ -94,6 +94,7 @@ public:
 		bool gefunden = false;
 
 		// liest die datei zeilenweise und vergleicht die eingegebenen daten mit den gespeicherten
+		// dX ist eine variable die die daten aus der datei speichert um sie mit den eingegebenen daten zu vergleichen
 		while (anmeldung >> dEmail >> dPasswort >> dName) {
 
 			if (dEmail == emailAnmeldung) {

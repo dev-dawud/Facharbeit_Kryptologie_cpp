@@ -14,3 +14,4 @@ Folgende Ressourcen wurden für die Erstellung dieses Projekts verwendet:
 - [find() - funktion](https://www.geeksforgeeks.org/cpp/std-find-in-cpp/)
 - [öffnen von links system() - funktion](https://cplusplus.com/forum/beginner/227697/)
 - [Secure Memory Zeroing](https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-yang.pdf)
+- 

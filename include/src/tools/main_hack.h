@@ -197,11 +197,11 @@ public:
         }
     }
 
-    // dieser BruteForce code ist nicht optimiert und effozient, er dient einfach nur umd die funktionalität zu zeigen
+    // dieser BruteForce code ist nicht optimiert und effizient, er dient einfach nur umd die funktionalität zu zeigen
 
 
     // funktion ruft sich selbst immer wieder auf um alle möglichen Kombinationen zu generieren
-	// aktuell ist die bisher generierte Kombination
+	// aktuell: ist die bisher generierte Kombination
     bool rekursivBruteForce(std::string aktuell, int length, const std::string alphabet, const std::string zielHash, int typ) {
         
         std::string versuchHash;
@@ -239,7 +239,7 @@ public:
 
         return false;
     }
-
+    
     void bruteForce(std::string zielHash, int typ) {
 
         std::string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
